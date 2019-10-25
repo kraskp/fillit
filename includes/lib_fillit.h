@@ -6,14 +6,14 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:18:54 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/25 17:37:17 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/25 19:30:18 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_FILLIT_H
 # define LIB_FILLIT_H
 
-# include "./libft/includes/libft.h"
+# include "../srcs/libft/includes/libft.h"
 # include <fcntl.h>
 
 int		main(int argc, char **argv);
