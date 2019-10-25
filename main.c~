@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 12:14:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/25 18:30:57 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/25 17:34:41 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,30 +25,28 @@ int	main(int argc, char **argv)
 	block_count = 0;
 	output = NULL;
 	if (argc != 2)
-		ft_putstr("usage:\t./fillit source_file\n");
-	if (argc == 2)
 	{
-		fd = open(argv[1], O_RDONLY);
-		block_count = check_num_blocks(fd, argv[1]);
-		close(fd);
-		fd = open(argv[1], O_RDONLY);
-		output = input_strings(argv[1], block_count);
-		close(fd);
+		ft_putstr("usage:\t./fillit source_file\n");
 	}
-//	if (fd == -1)
-//	{
-//		ft_putstr("error\n");
-//		exit(EXIT_FAILURE);
-//	}
+	if (argc == 2)
+		fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		ft_putstr("error\n");
+		exit(EXIT_FAILURE);
+	}
+	else if (fd > 0)
+	{
+		block_count = check_num_blocks(argv[1]);
+		output = input_strings(argv[1], block_count);
+	}
+	close(fd);
+	}
 	while (output[i])
 	{
-		if (!block_connection(output[i])) 
-		{
-			printf("%s", output[i]);
-			ft_putnbr(i);
-			ft_putchar('\n');
-		}
-			i++;
+		if (!block_connection(output[i]) || !block_validator(output[i]))
+			ft_putstr("error");
+		i++;
 	}
 	//ft_putnbr(block_count);
 	//	ft_putstr(*output);

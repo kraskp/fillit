@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:18:54 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/25 17:37:17 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/25 17:36:38 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,6 @@ char	*spot(char *str, char *min);
 char	*coordinates(char *spot);
 int		block_connection(char *str);
 int		block_validator(char *block);
-int		check_num_blocks(int fd, char *file);
+int		check_num_blocks(char *file);
 
 #endif

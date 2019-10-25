@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:30:52 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/25 16:35:06 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/25 17:09:36 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ char	*spot(char *str, char *min)
 
 char	*coordinates (char *spot)
 {
-	//	char c[9];
 	char *c;
+//	char *c;
 	int i;
 	int j;
 
-	c = NULL;
+	c = ft_memalloc(9);
 	i = 0;
 	j = 0;
 	while (i < 16)
@@ -72,5 +72,6 @@ char	*coordinates (char *spot)
 		}
 		i++;
 	}
+	c[8] = 0x00;
 	return (c);
 }
