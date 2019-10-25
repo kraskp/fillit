@@ -6,72 +6,12 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 12:14:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/25 15:40:27 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/25 16:34:38 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
-
-char	*min(char *str)
-{
-	char min[];
-	int	i;
-
-	i = 0;
-	min = "3,3";
-	while (i < 20)
-	{
-		if (str[i] == '#')
-		{
-			if (i / 5 < min[1])
-				min[1] = i / 5;
-			if (i % 5 < min[0])
-				min[0] = i % 5;
-		}
-		i++;
-	}
-	return (min);
-}
-
-char	*spot(char *str, char *min)
-{
-	int m;
-	int i;
-
-	i = 0;
-	m = min[0] + min[1] * 5;
-	while (i < 20)
-	{
-		if (str[i] == '#')
-		{
-			str[i - m] = '#';
-			str[i] = '.';
-		}
-		i++;
-	}
-	return (str);
-}
-
-char	*cordinates (char *spot)
-{
-	char c[9];
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while (i < 16)
-	{
-		if (spot[i] == '#')
-		{
-			c[j] == i % 5;
-			c[j + 1] == 1 / 5;
-			j += 2;
-		}
-		i++;
-	}
-	return (c);
-}
+#include "./includes/libft/includes/libft.h"
+#include "./includes/lib_fillit.h"
 
 int	block_connection(char *str)
 {
@@ -121,31 +61,6 @@ int	block_validator(char *block)
 
 // count of blocks will be done by get nextd line / 5
 
-char	**input_strings(char *path, int size)
-{
-	int		fd;
-	int		ret;
-	int		b;
-	char	*buf;
-	char	**output;
-
-	b = 0;
-	buf = ft_strnew(21);
-	if (!(output = (char**)ft_memalloc(sizeof(char*) * (size + 1))))
-		return (NULL);
-	fd = open(path, O_RDONLY);
-	if (fd == -1)
-		return (NULL);
-	while ((ret = read(fd, buf, 21)))
-	{
-		output[b] = ft_strdup(buf);
-		b++;
-	}
-	free(buf);
-	if (close(fd) == -1)
-		return (NULL);
-	return (output);
-}
 			
 int	check_num_blocks(int fd, char **file)
 {
