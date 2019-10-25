@@ -12,7 +12,7 @@
 
 #include "./includes/lib_fillit.h"
 
-int	*min(char *str)
+int	*ft_min(char *str)
 {
 	int *min;
 	int	i;
@@ -35,11 +35,18 @@ int	*min(char *str)
 	return (min);
 }
 
-char	*spot(char *str, char *min)
+char	*spot(char *str)
 {
 	int m;
 	int i;
-
+	int *min;
+	
+	if (str[0] == '#')
+	{
+		printf("%s", str);
+		return (str);
+	}
+	min = ft_min(str);
 	i = 0;
 	m = min[0] + min[1] * 5;
 	while (i < 20)
@@ -51,25 +58,28 @@ char	*spot(char *str, char *min)
 		}
 		i++;
 	}
+	printf("%s", str);
 	return (str);
 }
 
-char	*coordinates (char *spot)
+char	*coordinates (char *str)
 {
 	char *c;
 //	char *c;
 	int i;
 	int j;
+	char *new;
 
+	new = spot(&str[0]);
 	c = ft_memalloc(9);
 	i = 0;
 	j = 0;
 	while (i < 16)
 	{
-		if (spot[i] == '#')
+		if (new[i] == '#')
 		{
-			c[j] = i % 5;
-			c[j + 1] = 1 / 5;
+			c[j] = i % 5 + '0';
+			c[j + 1] = i / 5 + '0';
 			j += 2;
 		}
 		i++;

@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 12:14:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/25 18:53:10 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/25 19:16:40 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	int i;
 	int *m;
 	char *spot;
-	char *coordinates;
+	char *coord;
 	char *encl;
 
 
@@ -44,12 +44,15 @@ int	main(int argc, char **argv)
 	}
 	while (output[i])
 	{
-		printf("%s", output[i]);
-		m = min(output[i]);
-		ft_array_print(m, 2, encl);
-		ft_putchar('\n');
+		coord = coordinates(output[i]);
 		i++;
+		printf("%s\n", coord);
 	}
+//		m = min(output[i]);
+//		ft_array_print(m, 2, encl);
+//		ft_putchar('\n');
+//		i++;
+//	}
 //	if (fd == -1)
 //	{
 //		ft_putstr("error\n");
