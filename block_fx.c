@@ -48,13 +48,13 @@ int	block_validator(char *block)
 	{
 		sum += block[i];
 		i++;
-//		if (i % 5 == 0 && block[i - 1] != '\n')
-//			return (0);
+		if (i % 5 == 0 && block[i - 1] != '\n')
+			return (0);
 	}
-//	if (!(block[i] == 0 || block[i] == '\n'))
-//	{
-//		return (0);
-//	}
+	if (!(block[i] == 0 || block[i] == '\n'))
+	{
+		return (0);
+	}
 	if (sum != 732)
 		return (0);
 	return (1);

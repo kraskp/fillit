@@ -18,7 +18,7 @@
 
 int		main(int argc, char **argv);
 char	**input_strings(char *path, int size);
-char	*min(char *str);
+int	*min(char *str);
 char	*spot(char *str, char *min);
 char	*coordinates(char *spot);
 int		block_connection(char *str);

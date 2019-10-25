@@ -12,13 +12,15 @@
 
 #include "./includes/lib_fillit.h"
 
-char	*min(char *str)
+int	*min(char *str)
 {
-	char *min;
+	int *min;
 	int	i;
 
 	i = 0;
-	min = "3,3";
+	min = ft_memalloc(8);
+	min[0] = 3;
+	min[1] = 3;
 	while (i < 20)
 	{
 		if (str[i] == '#')
