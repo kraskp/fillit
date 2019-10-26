@@ -36,13 +36,13 @@ typedef	struct	s_map
 	int			maxi;
 }				t_map;
 
-void				*bigger_map(t_map *map);
+void				bigger_map(t_map *map);
 int				main(int argc, char **argv);
 char				**input_strings(char *path, int size);
 int				*ft_min(char *str);
 char				*value(char **str);
 char				*spot(char *str);
-char				*coordinates(char *spot, int k);
+char				*coordinates(char *spot);
 int				block_connection(char *str);
 int				block_validator(char *block);
 int				check_num_blocks(char *file);

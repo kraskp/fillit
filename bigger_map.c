@@ -12,7 +12,7 @@
 
 #include "./includes/lib_fillit.h"
 
-void	*bigger_map(t_map *map)
+void	bigger_map(t_map *map)
 {
 	map->maxi++;
 	map->mappi = starting_map(map->maxi);

@@ -99,7 +99,7 @@ char	*spot(char *str)
 	return (str);
 }
 
-char	*coordinates(char *str, int k)
+char	*coordinates(char *str)
 {
 	char	*c;
 	int		i;
@@ -135,7 +135,7 @@ char	**cool(int block_count, char **output)
 		return NULL;
 	while (output[i])
 	{
-		jou[i] = coordinates(output[i], i);
+		jou[i] = coordinates(output[i]);
 		i++;
 	}
 	jou[block_count] = '\0';
