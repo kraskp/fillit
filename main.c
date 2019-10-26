@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 12:14:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/25 19:16:40 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/26 19:13:10 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 // usage of struct t_place *info has reduced number of variables needed here -KK
 int	main(int argc, char **argv)
 {
-	int	fd;
-	int i;
-	char *encl;
-	t_info *info;
+	int		fd;
+	int		i;
+	char	*encl;
+	t_info	*info;
 
 	info = NULL;
 	encl = "{}";
@@ -38,7 +38,8 @@ int	main(int argc, char **argv)
 		info->output = input_strings(argv[1], info->block_count);
 		close(fd);
 	}
-	if (!(info->coord = (char **)ft_memalloc(sizeof(char *) * (info->block_count + 1))))
+	if (!(info->coord = (char **)ft_memalloc(sizeof(char *) *
+		(info->block_count + 1))))
 		info->coord = NULL;
 	info->coord[info->block_count] = NULL;
 	while (info->output[i])
@@ -68,7 +69,7 @@ int	main(int argc, char **argv)
 //	}
 //	while (output[i])
 //	{
-//		if (!block_connection(output[i]) && !block_validator(output[i])) 
+//		if (!block_connection(output[i]) && !block_validator(output[i]))
 //		{
 //			printf("%s", output[i]);
 //			ft_putnbr(i);

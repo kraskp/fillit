@@ -6,16 +6,16 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:47:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/25 16:47:51 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/26 19:15:22 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/lib_fillit.h"
 
-int	block_connection(char *str)
+int		block_connection(char *str)
 {
-	int	block;
-	int	i;
+	int		block;
+	int		i;
 
 	block = 0;
 	i = 0;
@@ -37,10 +37,10 @@ int	block_connection(char *str)
 	return (block == 6 || block == 8);
 }
 
-int	block_validator(char *block)
+int		block_validator(char *block)
 {
-	int i;
-	int sum;
+	int		i;
+	int		sum;
 
 	i = 0;
 	sum = 0;
@@ -50,7 +50,6 @@ int	block_validator(char *block)
 		i++;
 		if (i % 5 == 0 && block[i - 1] != '\n')
 			return (0);
-
 		// The following code will be necessary to prevent segfaults in the final version
 		// I noticed this after testing some of the bad blocks files in the tests_blocks folder
 		// ft_exit_error();
@@ -72,7 +71,7 @@ t_info		*check_num_blocks(int fd, t_info *info)
 	char	*line;
 
 	info->block_count = 0;
-	line = NULL;	
+	line = NULL;
 	while (get_next_line(fd, &line) == 1)
 	{
 		info->block_count++;

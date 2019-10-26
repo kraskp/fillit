@@ -6,25 +6,25 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:30:52 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/25 17:09:36 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/26 19:08:37 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/lib_fillit.h"
 #include <stdio.h>
 
-int	max(char *coord)
+int		max(char *coord)
 {
 	int i;
 	int max;
 	int value;
-	
+
 	i = 0;
 	value = coord[0] - '0';
 	max = value;
 	while (i < 9)
 	{
-		value = coord[i] - '0';	
+		value = coord[i] - '0';
 		if (value > max)
 			max = value;
 		i++;
@@ -33,7 +33,7 @@ int	max(char *coord)
 	return (max + 1);
 }
 
-int	*ft_min(char *str)
+int		*ft_min(char *str)
 {
 	int *min;
 	int	i;
@@ -75,7 +75,7 @@ char	*spot(char *str)
 	int m;
 	int i;
 	int *min;
-	
+
 	if (str[0] == '#')
 	{
 //		printf("%s", str);
@@ -97,12 +97,12 @@ char	*spot(char *str)
 	return (str);
 }
 
-char	*coordinates (char *str, int k)
+char	*coordinates(char *str, int k)
 {
-	char *c;
-	int i;
-	int j;
-	char *new;
+	char	*c;
+	int		i;
+	int		j;
+	char	*new;
 
 	new = spot(&str[0]);
 	value(&new[0], k);
@@ -120,6 +120,5 @@ char	*coordinates (char *str, int k)
 		i++;
 	}
 	c[8] = 0x00;
-
 	return (c);
 }

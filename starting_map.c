@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 16:40:02 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/26 16:40:06 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/26 19:11:42 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 t_info	*starting_map(int max, t_info *info)
 {
-	char **map;
-	int i;
+	char	**map;
+	int		i;
+
 	i = 0;
 	if (!(map = (char **)ft_memalloc(sizeof(char *) * max + 1)))
-		return (NULL);	
+		return (NULL);
 	while (i < max)
 	{
 		if (!(map[i] = (char *)ft_memalloc(sizeof(char) * max + 1)))
