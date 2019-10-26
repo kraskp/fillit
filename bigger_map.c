@@ -1,36 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   starting_map.c                                     :+:      :+:    :+:   */
+/*   lib_fillit.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/26 16:40:02 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/26 19:11:42 by kkraszew         ###   ########.fr       */
+/*   Created: 2019/10/25 16:18:54 by kkraszew          #+#    #+#             */
+/*   Updated: 2019/10/26 17:58:29 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/lib_fillit.h"
-#include <stdio.h>
 
-char	**starting_map(int max)
+void	*bigger_map(t_map *map)
 {
-	char	**map;
-	int		i;
-
-	i = 0;
-	if (!(map = (char **)ft_memalloc(sizeof(char *) * max + 1)))
-		return (NULL);
-	while (i < max)
-	{
-		if (!(map[i] = (char *)ft_memalloc(sizeof(char) * max + 1)))
-			return (NULL);
-		ft_memset(map[i], '.', max);
-		map[i][max] = '\0';
-//		printf("%s\n", map[i]);
-		i++;
-	}
-	map[max] = NULL;
-//	info->map = map;
-	return (map);
+	map->maxi++;
+	map->mappi = starting_map(map->maxi);
 }

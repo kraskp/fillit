@@ -13,7 +13,7 @@
 #include "./includes/lib_fillit.h"
 #include <stdio.h>
 
-int		max(char *coord)
+int		ft_max(char *coord)
 {
 	int i;
 	int max;
@@ -56,18 +56,20 @@ int		*ft_min(char *str)
 	return (min);
 }
 
-void	value(char *str, int k)
+char	*value(char **str)
 {
-	int i;
+	int 	i;
+	char	*values;
 
-	i = 0;
-	while (i < 16)
+	if (!(values = (char *)ft_memalloc(sizeof(char) * 9)))
+		return (NULL);
+	i = -1;
+	while (str[++i])
 	{
-		if (str[i] == '#')
-			str[i] = 'A' + k;
-		i++;
+		values[i] = 'A' + i;
 	}
-//	printf("%s", str);
+	values[i] = '\0';
+	return (values);
 }
 
 char	*spot(char *str)
@@ -105,13 +107,13 @@ char	*coordinates(char *str, int k)
 	char	*new;
 
 	new = spot(&str[0]);
-	value(&new[0], k);
+	//value(&new[0], k);
 	c = ft_memalloc(9);
 	i = 0;
 	j = 0;
 	while (i < 16)
 	{
-		if (new[i] == 'A' + k)
+		if (new[i] == '#')
 		{
 			c[j] = i % 5 + '0';
 			c[j + 1] = i / 5 + '0';
@@ -121,4 +123,21 @@ char	*coordinates(char *str, int k)
 	}
 	c[8] = 0x00;
 	return (c);
+}
+
+char	**cool(int block_count, char **output)
+{
+	char	**jou;
+	int	i;
+
+	i = 0;
+	if (!(jou = (char **)malloc(sizeof(char *) * block_count + 1)))
+		return NULL;
+	while (output[i])
+	{
+		jou[i] = coordinates(output[i], i);
+		i++;
+	}
+	jou[block_count] = '\0';
+	return (jou);
 }

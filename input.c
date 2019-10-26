@@ -23,17 +23,21 @@ char	**input_strings(char *path, int size)
 	b = 0;
 	buf = ft_strnew(21);
 	if (!(output = (char**)ft_memalloc(sizeof(char*) * (size + 1))))
-		return (NULL);
+		output = NULL;
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (NULL);
+		output = NULL;
 	while ((ret = read(fd, buf, 21)))
 	{
+		buf[ret] = 0;
+		if (!block_connection(buf) || !block_validator(buf))
+			return (NULL); //also exit code;
 		output[b] = ft_strdup(buf);
 		b++;
 	}
+	output[size] = 0;
 	free(buf);
 	if (close(fd) == -1)
-		return (NULL);
+		output = NULL;
 	return (output);
 }

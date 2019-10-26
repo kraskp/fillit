@@ -17,43 +17,53 @@
 // usage of struct t_place *info has reduced number of variables needed here -KK
 int	main(int argc, char **argv)
 {
-	int		fd;
-	int		i;
-	char	*encl;
+	int	i;
+//	char	*encl;
 	t_info	*info;
-
-	info = NULL;
-	encl = "{}";
+	t_etris	*tetris;
+	t_map	*map;
+//	info = NULL;
+//	tetris = NULL;
+//	encl = "{}";
 	i = 0;
-	fd = 0;
 	if (argc != 2)
 		ft_exit_usage();
 	if (argc == 2)
 	{
-		info = create_info();
-		fd = open(argv[1], O_RDONLY);
-		info = check_num_blocks(fd, info);
-		close(fd);
-		fd = open(argv[1], O_RDONLY);
-		info->output = input_strings(argv[1], info->block_count);
-		close(fd);
+		info = create_info(argv[1]);
+		tetris = create_tetris(info);
+		map = create_map(tetris);
+//		check_num_blocks(argv[1]);
+//		input_strings(argv[1], info->block_count);
+//		info->coord = cool(info);
 	}
-	if (!(info->coord = (char **)ft_memalloc(sizeof(char *) *
-		(info->block_count + 1))))
-		info->coord = NULL;
-	info->coord[info->block_count] = NULL;
+//	if (!(info->coord = (char **)ft_memalloc(sizeof(char *) *
+//		(info->block_count + 1))))
+//		info->coord = NULL;
+//	info->coord[info->block_count] = NULL;
 	while (info->output[i])
 	{
-		info->coord[i] = coordinates(info->output[i], i);
-		ft_putstr(info->coord[i]);
+//		ft_putstr(info->output[i]);
+//		tetris->coord[i] = coordinates(tetris->output[i], i);
+		ft_putstr(tetris->coord[i]);
+		ft_putstr("\n");
+		ft_putchar(tetris->value[i]);
+		ft_putchar('\n');
+		i++;
+	}
+//	ft_putnbr(max(info->coord[0]));
+//	ft_putstr("\n");
+//	info = starting_map(max(info->coord[0]), info);
+//	ft_putnbr(max(info->coord[0]));
+//	ft_putstr("\n");
+	i = 0;
+	bigger_map(map);
+	while (i < map->maxi)
+	{
+		ft_putstr(map->mappi[i]);
 		ft_putstr("\n");
 		i++;
 	}
-	ft_putnbr(max(info->coord[0]));
-	ft_putstr("\n");
-	info = starting_map(max(info->coord[0]), info);
-	ft_putnbr(max(info->coord[0]));
-	ft_putstr("\n");
 	ft_putnbr(info->block_count);
 	ft_putstr("\n");
 
@@ -77,7 +87,7 @@ int	main(int argc, char **argv)
 //		}
 //			i++;
 //	}
-	//ft_putnbr(block_count);
+//	ft_putnbr(block_count);
 	//	ft_putstr(*output);
 	free(info);
 	return (0);

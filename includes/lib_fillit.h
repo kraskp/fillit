@@ -19,34 +19,40 @@
 typedef struct	s_info
 {
 	int			block_count;
-	char		**map;
-	char		**coord;
-	char		**output;
+//	char			**map;
+//	char			**coord;
+	char			**output;
 }				t_info;
 
-//function value.. to change the spot to a correct value according to the order of blocks from a file. 
-// (1st block is 'A', second 'B'. changes have been done to the coordinates and to main. 
-// There is a new parameter in coordinates (int k) which is the index of the double array.. check main 
-//while (output[i])
-//coord = coordinates(output[i], i); //change i to k if it helps. 
-//lets say that the first i = 0, so. if (*str == #) -> *str = 'A' + i.
-//is same as 'A' + 0 = 'A'. next will be 'A' + 1 = 'B'. etc. 
-//delete these comments when unnessesary. 
-//idea how to make first map. since we have this coordinates which will look like in example 01020304 this max value of 4 will be our starting map. 
+typedef struct	s_etris
+{
+	char			**coord;
+	char			*value;
+}				t_etris;
 
+typedef	struct	s_map
+{
+	char			**mappi;
+	int			maxi;
+}				t_map;
+
+void				*bigger_map(t_map *map);
 int				main(int argc, char **argv);
-char			**input_strings(char *path, int size);
+char				**input_strings(char *path, int size);
 int				*ft_min(char *str);
-void			value(char *str, int k);
-char			*spot(char *str);
-char			*coordinates(char *spot, int k);
+char				*value(char **str);
+char				*spot(char *str);
+char				*coordinates(char *spot, int k);
 int				block_connection(char *str);
 int				block_validator(char *block);
-t_info			*check_num_blocks(int fd, t_info *info);
-t_info			*starting_map(int max, t_info *info);
-int				max(char *coord);
-t_info			*create_info(void);
-void			ft_exit_usage(void);
-void			ft_exit_error(void);
+int				check_num_blocks(char *file);
+char				**starting_map(int max);
+int				ft_max(char *coord);
+t_info				*create_info(char *file);
+void				ft_exit_usage(void);
+void				ft_exit_error(void);
+char				**cool(int block_count, char **output);
+t_etris				*create_tetris(t_info *info);
+t_map				*create_map(t_etris *tetris);
 
 #endif

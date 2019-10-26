@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   starting_map.c                                     :+:      :+:    :+:   */
+/*   create_info.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/26 16:40:02 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/26 19:11:42 by kkraszew         ###   ########.fr       */
+/*   Created: 2019/10/26 16:19:38 by kkraszew          #+#    #+#             */
+/*   Updated: 2019/10/26 19:10:28 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/lib_fillit.h"
-#include <stdio.h>
 
-char	**starting_map(int max)
+t_map	*create_map(t_etris *tetris)
 {
-	char	**map;
-	int		i;
-
-	i = 0;
-	if (!(map = (char **)ft_memalloc(sizeof(char *) * max + 1)))
+	t_map	*mapp;
+	
+	if (!(mapp = (t_map *)ft_memalloc(sizeof(t_map))))
 		return (NULL);
-	while (i < max)
-	{
-		if (!(map[i] = (char *)ft_memalloc(sizeof(char) * max + 1)))
-			return (NULL);
-		ft_memset(map[i], '.', max);
-		map[i][max] = '\0';
-//		printf("%s\n", map[i]);
-		i++;
-	}
-	map[max] = NULL;
-//	info->map = map;
-	return (map);
+	mapp->maxi = (ft_max(tetris->coord[0]));
+	mapp->mappi = starting_map(mapp->maxi);
+	return (mapp);
 }

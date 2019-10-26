@@ -66,22 +66,26 @@ int		block_validator(char *block)
 	return (1);
 }
 
-t_info		*check_num_blocks(int fd, t_info *info)
+int	check_num_blocks(char *file)
 {
 	char	*line;
+	int	fd;
+	int	block_count;
 
-	info->block_count = 0;
+	block_count = 0;
 	line = NULL;
+	fd = open(file, O_RDONLY);
 	while (get_next_line(fd, &line) == 1)
 	{
-		info->block_count++;
+		block_count++;
 		free(line);
 	}
-	info->block_count++;
+	block_count++;
 	// Added an extra check here.
 	// If (number of lines + 1) % 5 does not = 0, then the input file is wrong.
-	if (info->block_count % 5 != 0)
+	if (block_count % 5 != 0)
 		ft_exit_error();
-	info->block_count /= 5;
-	return (info);
+	block_count /= 5;
+	close(fd);
+	return (block_count);
 }
