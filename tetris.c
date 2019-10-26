@@ -12,15 +12,16 @@
 
 #include "./includes/lib_fillit.h"
 
-t_etris	*create_tetris(t_info *info)
+t_etris	*create_tetris(char *str)
 {
 	t_etris *tetris;
-//	t_info	*info;
+	t_info	*info;
 
-//	info = create_info(str);
+	info = create_info(str);
 	if (!(tetris = (t_etris *)ft_memalloc(sizeof(t_etris))))
 		return (NULL);
 	tetris->coord = cool(info->block_count, info->output);
 	tetris->value = value(info->output);
+	free(info);
 	return (tetris);
 }

@@ -52,7 +52,7 @@ t_info				*create_info(char *file);
 void				ft_exit_usage(void);
 void				ft_exit_error(void);
 char				**cool(int block_count, char **output);
-t_etris				*create_tetris(t_info *info);
+t_etris				*create_tetris(char *str);
 t_map				*create_map(t_etris *tetris);
 
 #endif

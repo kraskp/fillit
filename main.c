@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 {
 	int	i;
 //	char	*encl;
-	t_info	*info;
+//	t_info	*info;
 	t_etris	*tetris;
 	t_map	*map;
 //	info = NULL;
@@ -30,8 +30,8 @@ int	main(int argc, char **argv)
 		ft_exit_usage();
 	if (argc == 2)
 	{
-		info = create_info(argv[1]);
-		tetris = create_tetris(info);
+//		info = create_info(argv[1]);
+		tetris = create_tetris(argv[1]);
 		map = create_map(tetris);
 //		check_num_blocks(argv[1]);
 //		input_strings(argv[1], info->block_count);
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 //		(info->block_count + 1))))
 //		info->coord = NULL;
 //	info->coord[info->block_count] = NULL;
-	while (info->output[i])
+	while (tetris->coord[i])
 	{
 //		ft_putstr(info->output[i]);
 //		tetris->coord[i] = coordinates(tetris->output[i], i);
@@ -64,8 +64,8 @@ int	main(int argc, char **argv)
 		ft_putstr("\n");
 		i++;
 	}
-	ft_putnbr(info->block_count);
-	ft_putstr("\n");
+//	ft_putnbr(info->block_count);
+//	ft_putstr("\n");
 
 //		m = min(output[i]);
 //		ft_array_print(m, 2, encl);
@@ -89,6 +89,6 @@ int	main(int argc, char **argv)
 //	}
 //	ft_putnbr(block_count);
 	//	ft_putstr(*output);
-	free(info);
+//	free(info);
 	return (0);
 }

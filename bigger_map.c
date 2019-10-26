@@ -15,5 +15,6 @@
 void	bigger_map(t_map *map)
 {
 	map->maxi++;
+	free(map->mappi);
 	map->mappi = starting_map(map->maxi);
 }
