@@ -20,11 +20,9 @@ int	main(int argc, char **argv)
 	int	block_count;
 	char **output;
 	int i;
-	int *m;
-	char *spot;
-	char *coord;
+	char **coord;
 	char *encl;
-
+	char **map;
 
 	encl = "{}";
 	i = 0;
@@ -42,12 +40,18 @@ int	main(int argc, char **argv)
 		output = input_strings(argv[1], block_count);
 		close(fd);
 	}
+	if (!(coord = (char **)ft_memalloc(sizeof(char *) * (block_count + 1))))
+		printf("error");
+	coord[block_count] = '\0';
 	while (output[i])
 	{
-		coord = coordinates(output[i], i);
+		coord[i] = coordinates(output[i], i);
+		printf("%s\n", coord[i]);
 		i++;
-		printf("%s\n", coord);
 	}
+	printf("%d\n", max(coord[0]));
+	map = startingMap(max(coord[0]));
+
 //		m = min(output[i]);
 //		ft_array_print(m, 2, encl);
 //		ft_putchar('\n');

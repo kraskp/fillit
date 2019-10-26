@@ -32,5 +32,7 @@ char	*coordinates(char *spot, int k);
 int		block_connection(char *str);
 int		block_validator(char *block);
 int		check_num_blocks(int fd, char *file);
+char	**startingMap(int max);
+int	max(char *coord);
 
 #endif

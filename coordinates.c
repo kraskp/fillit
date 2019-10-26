@@ -12,6 +12,48 @@
 
 #include "./includes/lib_fillit.h"
 
+char	**startingMap(int max)
+{
+	char **map;
+	int i;
+
+	i = 0;
+	if (!(map = (char **)malloc(sizeof(char *) * max + 1)))
+		return (NULL);
+	while (i < max)
+	{
+		if (!(map[i] = (char *)malloc(sizeof(char) * max + 1)))
+			return (NULL);
+		ft_memset(map[i], 46, max);
+		map[i][max] = '\0';
+		printf("%s\n", map[i]);
+		i++;
+	}
+	map[max] = '\0';
+	return (map);
+}
+
+
+int	max(char *coord)
+{
+	int i;
+	int max;
+	int value;
+	
+	i = 0;
+	value = coord[0] - '0';
+	max = value;
+	while (i < 9)
+	{
+		value = coord[i] - '0';	
+		if (value > max)
+			max = value;
+		i++;
+	}
+//	printf("%d", max);
+	return (max + 1);
+}
+
 int	*ft_min(char *str)
 {
 	int *min;
@@ -46,7 +88,7 @@ void	value(char *str, int k)
 			str[i] = 'A' + k;
 		i++;
 	}
-	printf("%s", str);
+//	printf("%s", str);
 }
 
 char	*spot(char *str)
@@ -57,7 +99,7 @@ char	*spot(char *str)
 	
 	if (str[0] == '#')
 	{
-		printf("%s", str);
+//		printf("%s", str);
 		return (str);
 	}
 	min = ft_min(str);
@@ -72,7 +114,7 @@ char	*spot(char *str)
 		}
 		i++;
 	}
-	printf("%s", str);
+//	printf("%s", str);
 	return (str);
 }
 
