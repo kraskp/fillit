@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	}
 	while (output[i])
 	{
-		coord = coordinates(output[i]);
+		coord = coordinates(output[i], i);
 		i++;
 		printf("%s\n", coord);
 	}

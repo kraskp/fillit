@@ -35,6 +35,20 @@ int	*ft_min(char *str)
 	return (min);
 }
 
+void	value(char *str, int k)
+{
+	int i;
+
+	i = 0;
+	while (i < 16)
+	{
+		if (str[i] == '#')
+			str[i] = 'A' + k;
+		i++;
+	}
+	printf("%s", str);
+}
+
 char	*spot(char *str)
 {
 	int m;
@@ -62,7 +76,7 @@ char	*spot(char *str)
 	return (str);
 }
 
-char	*coordinates (char *str)
+char	*coordinates (char *str, int k)
 {
 	char *c;
 //	char *c;
@@ -71,12 +85,13 @@ char	*coordinates (char *str)
 	char *new;
 
 	new = spot(&str[0]);
+	value(&new[0], k);
 	c = ft_memalloc(9);
 	i = 0;
 	j = 0;
 	while (i < 16)
 	{
-		if (new[i] == '#')
+		if (new[i] == 'A' + k)
 		{
 			c[j] = i % 5 + '0';
 			c[j + 1] = i / 5 + '0';
