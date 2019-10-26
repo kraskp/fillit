@@ -22,6 +22,8 @@
 //lets say that the first i = 0, so. if (*str == #) -> *str = 'A' + i.
 //is same as 'A' + 0 = 'A'. next will be 'A' + 1 = 'B'. etc. 
 //delete these comments when unnessesary. 
+//idea how to make first map. since we have this coordinates which will look like in example 01020304 this max value of 4 will be our starting map. 
+
 
 int		main(int argc, char **argv);
 char	**input_strings(char *path, int size);
