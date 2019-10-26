@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:18:54 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/25 19:30:18 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/26 17:58:29 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,17 @@
 # include "../srcs/libft/includes/libft.h"
 # include <fcntl.h>
 
-//function value.. to change the spot to a correct value according to the order of blocks from a file. (1st block is 'A', second 'B'. changes have been done to the coordinates and to main. there is a new parameter in coordinates (int k) which is the index of the double array.. check main 
+typedef struct	s_info
+{
+	int			block_count;
+	char		**map;
+	char		**coord;
+	char		**output;
+}				t_info;
+
+//function value.. to change the spot to a correct value according to the order of blocks from a file. 
+// (1st block is 'A', second 'B'. changes have been done to the coordinates and to main. 
+// There is a new parameter in coordinates (int k) which is the index of the double array.. check main 
 //while (output[i])
 //coord = coordinates(output[i], i); //change i to k if it helps. 
 //lets say that the first i = 0, so. if (*str == #) -> *str = 'A' + i.
@@ -24,17 +34,19 @@
 //delete these comments when unnessesary. 
 //idea how to make first map. since we have this coordinates which will look like in example 01020304 this max value of 4 will be our starting map. 
 
-
-int		main(int argc, char **argv);
-char	**input_strings(char *path, int size);
-int	*ft_min(char *str);
-void	value(char *str, int k);
-char	*spot(char *str);
-char	*coordinates(char *spot, int k);
-int		block_connection(char *str);
-int		block_validator(char *block);
-int		check_num_blocks(int fd, char *file);
-char	**startingMap(int max);
-int	max(char *coord);
+int				main(int argc, char **argv);
+char			**input_strings(char *path, int size);
+int				*ft_min(char *str);
+void			value(char *str, int k);
+char			*spot(char *str);
+char			*coordinates(char *spot, int k);
+int				block_connection(char *str);
+int				block_validator(char *block);
+t_info			*check_num_blocks(int fd, t_info *info);
+t_info			*starting_map(int max, t_info *info);
+int				max(char *coord);
+t_info			*create_info(void);
+void			ft_exit_usage(void);
+void			ft_exit_error(void);
 
 #endif

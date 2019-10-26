@@ -50,32 +50,39 @@ int	block_validator(char *block)
 		i++;
 		if (i % 5 == 0 && block[i - 1] != '\n')
 			return (0);
+
+		// The following code will be necessary to prevent segfaults in the final version
+		// I noticed this after testing some of the bad blocks files in the tests_blocks folder
+		// ft_exit_error();
 	}
 	if (!(block[i] == 0 || block[i] == '\n'))
 	{
 		return (0);
+		// The following code will be necessary to prevent segfaults in the final version
+		// I noticed this after testing some of the bad blocks files in the tests_blocks folder
+		// ft_exit_error();
 	}
 	if (sum != 732)
 		return (0);
 	return (1);
 }
 
-// count of blocks will be done by get nextd line / 5
-
-			
-int	check_num_blocks(int fd, char *file)
+t_info		*check_num_blocks(int fd, t_info *info)
 {
-	int	block_count;
 	char	*line;
 
-	block_count = 0;
+	info->block_count = 0;
 	line = NULL;	
 	while (get_next_line(fd, &line) == 1)
 	{
-		block_count++;
+		info->block_count++;
 		free(line);
 	}
-	block_count++;
-	block_count /= 5;
-	return (block_count);
+	info->block_count++;
+	// Added an extra check here.
+	// If (number of lines + 1) % 5 does not = 0, then the input file is wrong.
+	if (info->block_count % 5 != 0)
+		ft_exit_error();
+	info->block_count /= 5;
+	return (info);
 }

@@ -11,28 +11,7 @@
 /* ************************************************************************** */
 
 #include "./includes/lib_fillit.h"
-
-char	**startingMap(int max)
-{
-	char **map;
-	int i;
-
-	i = 0;
-	if (!(map = (char **)malloc(sizeof(char *) * max + 1)))
-		return (NULL);
-	while (i < max)
-	{
-		if (!(map[i] = (char *)malloc(sizeof(char) * max + 1)))
-			return (NULL);
-		ft_memset(map[i], 46, max);
-		map[i][max] = '\0';
-		printf("%s\n", map[i]);
-		i++;
-	}
-	map[max] = '\0';
-	return (map);
-}
-
+#include <stdio.h>
 
 int	max(char *coord)
 {
@@ -121,7 +100,6 @@ char	*spot(char *str)
 char	*coordinates (char *str, int k)
 {
 	char *c;
-//	char *c;
 	int i;
 	int j;
 	char *new;
@@ -142,5 +120,6 @@ char	*coordinates (char *str, int k)
 		i++;
 	}
 	c[8] = 0x00;
+
 	return (c);
 }

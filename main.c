@@ -14,43 +14,47 @@
 #include "./includes/lib_fillit.h"
 #include <stdio.h>
 
+// usage of struct t_place *info has reduced number of variables needed here -KK
 int	main(int argc, char **argv)
 {
 	int	fd;
-	int	block_count;
-	char **output;
 	int i;
-	char **coord;
 	char *encl;
-	char **map;
+	t_info *info;
 
+	info = NULL;
 	encl = "{}";
 	i = 0;
 	fd = 0;
-	block_count = 0;
-	output = NULL;
 	if (argc != 2)
-		ft_putstr("usage:\t./fillit source_file\n");
+		ft_exit_usage();
 	if (argc == 2)
 	{
+		info = create_info();
 		fd = open(argv[1], O_RDONLY);
-		block_count = check_num_blocks(fd, argv[1]);
+		info = check_num_blocks(fd, info);
 		close(fd);
 		fd = open(argv[1], O_RDONLY);
-		output = input_strings(argv[1], block_count);
+		info->output = input_strings(argv[1], info->block_count);
 		close(fd);
 	}
-	if (!(coord = (char **)ft_memalloc(sizeof(char *) * (block_count + 1))))
-		printf("error");
-	coord[block_count] = '\0';
-	while (output[i])
+	if (!(info->coord = (char **)ft_memalloc(sizeof(char *) * (info->block_count + 1))))
+		info->coord = NULL;
+	info->coord[info->block_count] = NULL;
+	while (info->output[i])
 	{
-		coord[i] = coordinates(output[i], i);
-		printf("%s\n", coord[i]);
+		info->coord[i] = coordinates(info->output[i], i);
+		ft_putstr(info->coord[i]);
+		ft_putstr("\n");
 		i++;
 	}
-	printf("%d\n", max(coord[0]));
-	map = startingMap(max(coord[0]));
+	ft_putnbr(max(info->coord[0]));
+	ft_putstr("\n");
+	info = starting_map(max(info->coord[0]), info);
+	ft_putnbr(max(info->coord[0]));
+	ft_putstr("\n");
+	ft_putnbr(info->block_count);
+	ft_putstr("\n");
 
 //		m = min(output[i]);
 //		ft_array_print(m, 2, encl);
@@ -74,5 +78,6 @@ int	main(int argc, char **argv)
 //	}
 	//ft_putnbr(block_count);
 	//	ft_putstr(*output);
+	free(info);
 	return (0);
 }
