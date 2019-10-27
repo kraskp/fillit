@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:47:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/26 19:15:22 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/27 18:05:15 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int		block_validator(char *block)
 int	check_num_blocks(char *file)
 {
 	char	*line;
-	int	fd;
-	int	block_count;
+	int		fd;
+	int		block_count;
 
 	block_count = 0;
 	line = NULL;
