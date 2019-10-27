@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 12:14:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/27 13:15:20 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/27 15:34:31 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ int	main(int argc, char **argv)
 //		(info->block_count + 1))))
 //		info->coord = NULL;
 //	info->coord[info->block_count] = NULL;
+	
+	printf("%d", check_if_fits(map, tetris->coord[0], 0, 0));
 	while (tetris->coord[i])
 	{
 //		ft_putstr(info->output[i]);

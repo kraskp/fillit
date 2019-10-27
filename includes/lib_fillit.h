@@ -36,6 +36,7 @@ typedef	struct	s_map
 	int			maxi;
 }				t_map;
 
+int				check_if_fits(t_map *map, char *t, int x, int y);
 void				bigger_map(t_map *map);
 int				main(int argc, char **argv);
 char				**input_strings(char *path, int size);
