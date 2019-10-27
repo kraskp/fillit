@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 12:14:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/26 19:13:10 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/27 13:15:20 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ int	main(int argc, char **argv)
 //	ft_putnbr(max(info->coord[0]));
 //	ft_putstr("\n");
 	i = 0;
-	bigger_map(map);
+//	bigger_map(map);
 	while (i < map->maxi)
 	{
 		ft_putstr(map->mappi[i]);

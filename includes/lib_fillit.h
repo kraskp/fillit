@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:18:54 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/26 17:58:29 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/27 13:07:00 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int				block_connection(char *str);
 int				block_validator(char *block);
 int				check_num_blocks(char *file);
 char				**starting_map(int max);
-int				ft_max(char *coord);
+int				ft_max(char **coord);
 t_info				*create_info(char *file);
 void				ft_exit_usage(void);
 void				ft_exit_error(void);

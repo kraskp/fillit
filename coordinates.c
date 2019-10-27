@@ -6,31 +6,29 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:30:52 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/26 19:08:37 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/27 13:17:30 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/lib_fillit.h"
 #include <stdio.h>
 
-int		ft_max(char *coord)
+int		ft_max(char **coord)
 {
 	int i;
-	int max;
+	int min;
 	int value;
+	int	j;
 
-	i = 0;
-	value = coord[0] - '0';
-	max = value;
-	while (i < 9)
-	{
-		value = coord[i] - '0';
-		if (value > max)
-			max = value;
+	j = 0;
+	i = 2;
+	while (coord[j])
+		j++;
+	min = j * 4;
+	while (i * i < min)
 		i++;
-	}
-//	printf("%d", max);
-	return (max + 1);
+//	printf("%d", i);
+	return (i);
 }
 
 int		*ft_min(char *str)
@@ -138,6 +136,6 @@ char	**cool(int block_count, char **output)
 		jou[i] = coordinates(output[i]);
 		i++;
 	}
-	jou[block_count] = '\0';
+	jou[block_count] = NULL;
 	return (jou);
 }
