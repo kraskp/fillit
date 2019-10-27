@@ -12,13 +12,13 @@
 
 #include "./includes/lib_fillit.h"
 
-t_map	*create_map(t_etris *tetris)
+t_map	*create_map(t_info *info)
 {
 	t_map	*mapp;
 	
 	if (!(mapp = (t_map *)ft_memalloc(sizeof(t_map))))
 		return (NULL);
-	mapp->maxi = (ft_max(tetris->coord));
+	mapp->maxi = (ft_max(info->coord));
 	mapp->mappi = starting_map(mapp->maxi);
 	return (mapp);
 }

@@ -22,7 +22,7 @@ int	main(int argc, char **argv)
 	t_info	*info;
 	t_etris	*tetris;
 	t_map	*map;
-//	info = NULL;
+	info = NULL;
 //	tetris = NULL;
 //	encl = "{}";
 	i = 0;

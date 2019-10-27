@@ -17,7 +17,7 @@ int		ft_max(char **coord)
 {
 	int i;
 	int min;
-	int value;
+	//int value;
 	int	j;
 
 	j = 0;
@@ -123,6 +123,7 @@ char	*coordinates(char *str)
 	return (c);
 }
 
+//char	**cool(int block_count, char **output)
 char	**cool(int block_count, char **output)
 {
 	char	**jou;
