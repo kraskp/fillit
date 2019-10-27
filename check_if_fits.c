@@ -12,6 +12,21 @@
 
 #include "./includes/lib_fillit.h"
 
+void	move_back_if_no_fit(t_etris  *t, int x, int y)
+{
+	int	i;
+
+	i = 0;
+	while (i < 8)
+	{
+		if (i % 2 == 0)
+			t->coord[i] = t->coord[i] - x;
+		else
+			t->coord[i] = t->coord[i] - y;
+		i++;
+	}
+}
+
 int	check_if_fits(t_map *map, t_etris  *t, int x, int y)
 {
 	int	i;
@@ -25,21 +40,21 @@ int	check_if_fits(t_map *map, t_etris  *t, int x, int y)
 			t->coord[i] = t->coord[i] + y;
 		i++;
 	}
-	i = -1;
-	while (++i < 8)
-		ft_putnbr(t->coord[i]);
-	ft_putchar('\n');
-	ft_putnbr(map->maxi);
-	ft_putchar('\n');
 	i = 0;
 	while (i < 8)
 	{
 		if (map->maxi <= t->coord[i] || map->maxi <= t->coord[i + 1])
+		{
+			move_back_if_no_fit(t, x, y);	
 			return (0);
+		}
 		if (map->mappi[t->coord[i]][t->coord[i + 1]] == '.')
-				i += 2;
+			i += 2;
 		else
+		{
+			move_back_if_no_fit(t, x, y);
 			return (0);
+		}
 	}
 	return (1);
-}	
+}

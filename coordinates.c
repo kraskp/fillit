@@ -85,16 +85,25 @@ t_list	*create_lst(char **output)
 	t_list	*list;
 	t_etris	*tetris;
 	t_list	*head;
+//	char	c;
+//	int	*jou;
+//	t_etris *makak;
 
+//	c = 'A';
 	i = 0;
-	tetris = create_tetris(intcoordinates(output[i]), ('A' + i));
-	list = ft_lstnew(tetris, sizeof(tetris));
+//	jou = intcoordinates(output[i]);
+	tetris = create_tetris(intcoordinates(output[i]), 'A' + i);
+//	ft_putchar(tetris->value);
+	list = ft_lstnew(tetris, 9);
+//	makak = list->content;
+//	ft_putchar(makak->value);
 	head = list;
 	i++;
 	while (output[i])
 	{
+//		jou = intcoordinates(output[i]);
 		tetris = create_tetris(intcoordinates(output[i]), 'A' + i);
-		list->next = ft_lstnew(tetris, sizeof(tetris));
+		list->next = ft_lstnew(tetris, 9);
 		list = list->next;
 		i++;
 	}

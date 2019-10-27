@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 	t_info	*info;
 	t_list	*lst;
 	t_map	*map;
+//	t_etris *t;
 	info = NULL;
 	lst = NULL;
 //	tetris = NULL;
@@ -43,8 +44,11 @@ int	main(int argc, char **argv)
 //		(info->block_count + 1))))
 //		info->coord = NULL;
 //	info->coord[info->block_count] = NULL;
-	
-	printf("%d", check_if_fits(map, lst->content, 1, 0));
+//	map->mappi[1][1] = 'A';		
+	if(check_if_fits(map, lst->content, 0, 0))
+//	t = lst->content;
+//	ft_putchar(t->value);
+		map = fill_map(map, lst->content, 0, 0);
 	while (info->coord[i])
 	{
 //		ft_putstr(info->output[i]);

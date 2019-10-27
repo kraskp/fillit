@@ -56,6 +56,6 @@ t_etris			*create_tetris(int *arr, char c);
 t_map			*create_map(t_info *info);
 int				*intcoordinates(char *str);
 t_list			*create_lst(char **output);
-
+t_map			*fill_map(t_map *map, t_etris *t, int x, int y);
 
 #endif
