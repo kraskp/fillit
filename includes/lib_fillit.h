@@ -20,7 +20,7 @@ typedef struct	s_info
 {
 	int			block_count;
 //	char			**map;
-//	char			**coord;
+	char			**coord;
 	char			**output;
 }				t_info;
 
@@ -36,7 +36,7 @@ typedef	struct	s_map
 	int			maxi;
 }				t_map;
 
-int				check_if_fits(t_map *map, char *t, int x, int y);
+//int				check_if_fits(t_map *map, char *t, int x, int y);
 void				bigger_map(t_map *map);
 int				main(int argc, char **argv);
 char				**input_strings(char *path, int size);
@@ -53,7 +53,7 @@ t_info				*create_info(char *file);
 void				ft_exit_usage(void);
 void				ft_exit_error(void);
 char				**cool(int block_count, char **output);
-t_etris				*create_tetris(char *str);
+t_etris				*create_tetris(t_info *info);
 t_map				*create_map(t_etris *tetris);
 
 #endif

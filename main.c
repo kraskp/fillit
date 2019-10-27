@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 12:14:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/27 15:34:31 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/27 16:51:11 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argc, char **argv)
 {
 	int	i;
 //	char	*encl;
-//	t_info	*info;
+	t_info	*info;
 	t_etris	*tetris;
 	t_map	*map;
 //	info = NULL;
@@ -30,8 +30,8 @@ int	main(int argc, char **argv)
 		ft_exit_usage();
 	if (argc == 2)
 	{
-//		info = create_info(argv[1]);
-		tetris = create_tetris(argv[1]);
+		info = create_info(argv[1]);
+		tetris = create_tetris(info);
 		map = create_map(tetris);
 //		check_num_blocks(argv[1]);
 //		input_strings(argv[1], info->block_count);
@@ -42,12 +42,12 @@ int	main(int argc, char **argv)
 //		info->coord = NULL;
 //	info->coord[info->block_count] = NULL;
 	
-	printf("%d", check_if_fits(map, tetris->coord[0], 0, 0));
-	while (tetris->coord[i])
+//	printf("%d", check_if_fits(map, tetris->coord[0], 0, 0));
+	while (info->coord[i])
 	{
 //		ft_putstr(info->output[i]);
 //		tetris->coord[i] = coordinates(tetris->output[i], i);
-		ft_putstr(tetris->coord[i]);
+		ft_putstr(info->coord[i]);
 		ft_putstr("\n");
 		ft_putchar(tetris->value[i]);
 		ft_putchar('\n');
