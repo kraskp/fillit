@@ -33,7 +33,7 @@ int	main(int argc, char **argv)
 	{
 		info = create_info(argv[1]);
 //		tetris = create_tetris(info);
-		lst = create_lst(info->block_count, info->output);
+		lst = create_lst(info->output);
 		map = create_map(info);
 //		check_num_blocks(argv[1]);
 //		input_strings(argv[1], info->block_count);
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 //		info->coord = NULL;
 //	info->coord[info->block_count] = NULL;
 	
-//	printf("%d", check_if_fits(map, tetris->coord[0], 0, 0));
+	printf("%d", check_if_fits(map, lst->content, 1, 0));
 	while (info->coord[i])
 	{
 //		ft_putstr(info->output[i]);

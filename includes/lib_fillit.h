@@ -35,7 +35,7 @@ typedef	struct	s_map
 	int			maxi;
 }				t_map;
 
-//int				check_if_fits(t_map *map, char *t, int x, int y);
+int				check_if_fits(t_map *map, t_etris *t, int x, int y);
 void			bigger_map(t_map *map);
 int				main(int argc, char **argv);
 char			**input_strings(char *path, int size);
@@ -55,7 +55,7 @@ char			**cool(int block_count, char **output);
 t_etris			*create_tetris(int *arr, char c);
 t_map			*create_map(t_info *info);
 int				*intcoordinates(char *str);
-t_list			*create_lst(int block_count, char **output);
+t_list			*create_lst(char **output);
 
 
 #endif

@@ -63,10 +63,10 @@ int		*intcoordinates(char *str)
 	char	*new;
 
 	new = spot(&str[0]);
-	c = ft_memalloc(8);
+	c = (int *)malloc(sizeof(int) * 8);
 	i = 0;
 	j = 0;
-	while (i < 16)
+	while (i < 20)
 	{
 		if (new[i] == '#')
 		{
@@ -79,16 +79,15 @@ int		*intcoordinates(char *str)
 	return (c);
 }
 
-t_list	*create_lst(int block_count, char **output)
+t_list	*create_lst(char **output)
 {
-	int		*jou;
 	int		i;
 	t_list	*list;
 	t_etris	*tetris;
 	t_list	*head;
 
 	i = 0;
-	tetris = create_tetris(intcoordinates(output[i]), 'A' + i);
+	tetris = create_tetris(intcoordinates(output[i]), ('A' + i));
 	list = ft_lstnew(tetris, sizeof(tetris));
 	head = list;
 	i++;
