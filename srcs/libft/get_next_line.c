@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 18:57:22 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/24 11:47:39 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/27 13:41:23 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list	*handle_file(t_list **statlist, int fd)
 	f.fd = fd;
 	f.content = ft_strnew(1);
 	f.content_start = f.content;
-	ft_lstadd((statlist), ft_lstnew((void*)&f, sizeof(t_file)));
+	ft_lstaddfront((statlist), ft_lstnew((void*)&f, sizeof(t_file)));
 	return (*statlist);
 }
 

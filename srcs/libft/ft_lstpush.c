@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd.c                                        :+:      :+:    :+:   */
+/*   ft_lstpush.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/18 12:44:23 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/18 15:57:10 by kkraszew         ###   ########.fr       */
+/*   Created: 2019/10/27 13:47:36 by kkraszew          #+#    #+#             */
+/*   Updated: 2019/10/27 13:50:26 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd(t_list **alst, t_list *new)
+t_list	*ft_lstpush(t_list *first, void *item)
 {
-	if (alst && new)
+	t_list	*tmp;
+
+	if (!item)
+		return (NULL);
+	if (!first)
 	{
-		new->next = *alst;
-		*alst = new;
+		first = (t_list *)ft_memalloc(sizeof(t_list));
+		first->content = item;
+		first->next = NULL;
 	}
+	else
+	{
+		tmp = first;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = (t_list *)ft_memalloc(sizeof(t_list));
+		tmp->next->content = item;
+		tmp->next->next = NULL;
+	}
+	return (first);
 }
