@@ -140,3 +140,53 @@ char	**cool(int block_count, char **output)
 	jou[block_count] = NULL;
 	return (jou);
 }
+
+int	*intcoordinates(char *str)
+{
+	int	*c;
+	int		i;
+	int		j;
+	char	*new;
+	//char *encl = "{}";
+
+	new = spot(&str[0]);
+	//value(&new[0], k);
+	c = ft_memalloc(8);
+	i = 0;
+	j = 0;
+	while (i < 16)
+	{
+		if (new[i] == '#')
+		{
+			c[j] = i % 5;
+			c[j + 1] = i / 5;
+			j += 2;
+		}
+		i++;
+	}
+	//ft_array_print(c, 8, encl);
+	return (c);
+}
+
+t_list	*create_lst(int block_count, char **output)
+{
+	int	*jou;
+	int	i;
+	t_list	*list;
+	t_etris	*tetris;
+	t_list	*head;
+
+	i = 0;
+	tetris = create_tetris(intcoordinates(output[i]), 'A' + i);
+	list = ft_lstnew(tetris, sizeof(tetris));
+	head = list;
+	i++;
+	while (output[i])
+	{
+		tetris = create_tetris(intcoordinates(output[i]), 'A' + i);
+		list->next = ft_lstnew(tetris, sizeof(tetris));
+		list = list->next;
+		i++;
+	}
+	return (head);
+}

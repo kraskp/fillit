@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 12:14:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/27 16:51:11 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/27 17:41:07 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,10 @@ int	main(int argc, char **argv)
 	int	i;
 //	char	*encl;
 	t_info	*info;
-	t_etris	*tetris;
+	t_list	*lst;
 	t_map	*map;
 	info = NULL;
+	lst = NULL;
 //	tetris = NULL;
 //	encl = "{}";
 	i = 0;
@@ -31,8 +32,9 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		info = create_info(argv[1]);
-		tetris = create_tetris(info);
-		map = create_map(tetris);
+//		tetris = create_tetris(info);
+		lst = create_lst(info->block_count, info->output);
+		map = create_map(info);
 //		check_num_blocks(argv[1]);
 //		input_strings(argv[1], info->block_count);
 //		info->coord = cool(info);
@@ -49,7 +51,7 @@ int	main(int argc, char **argv)
 //		tetris->coord[i] = coordinates(tetris->output[i], i);
 		ft_putstr(info->coord[i]);
 		ft_putstr("\n");
-		ft_putchar(tetris->value[i]);
+//		ft_putchar(tetris->value[i]);
 		ft_putchar('\n');
 		i++;
 	}

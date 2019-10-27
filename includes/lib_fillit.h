@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:18:54 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/27 13:07:00 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/27 17:35:08 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct	s_info
 
 typedef struct	s_etris
 {
-	char			**coord;
-	char			*value;
+	int			*coord;
+	char			value;
 }				t_etris;
 
 typedef	struct	s_map
@@ -53,7 +53,10 @@ t_info				*create_info(char *file);
 void				ft_exit_usage(void);
 void				ft_exit_error(void);
 char				**cool(int block_count, char **output);
-t_etris				*create_tetris(t_info *info);
-t_map				*create_map(t_etris *tetris);
+t_etris				*create_tetris(int *arr, char c);
+t_map				*create_map(t_info *info);
+int				*intcoordinates(char *str);
+t_list				*create_lst(int block_count, char **output);
+
 
 #endif
