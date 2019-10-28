@@ -35,6 +35,7 @@ typedef	struct	s_map
 	int			maxi;
 }				t_map;
 
+void	move(t_list *lst, int y, int x);
 int				check_if_fits(t_map *map, t_etris *t, int x, int y);
 void			bigger_map(t_map *map);
 int				main(int argc, char **argv);
@@ -56,6 +57,11 @@ t_etris			*create_tetris(int *arr, char c);
 t_map			*create_map(t_info *info);
 int				*intcoordinates(char *str);
 t_list			*create_lst(char **output);
-t_map			*fill_map(t_map *map, t_etris *t, int x, int y);
+//void			fill_map(t_map *map, t_etris *t, int x, int y);
+void			fill_map(t_map *map, t_etris *t);
+int			*find_empty(t_map *map);
+void			solver(t_map *map, t_list *ls);
+void	move_back_if_no_fit(t_etris  *t, int x, int y);
+t_map	*solve(t_list *list, t_map *map);
 
 #endif

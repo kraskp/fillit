@@ -22,7 +22,8 @@ int	main(int argc, char **argv)
 	t_info	*info;
 	t_list	*lst;
 	t_map	*map;
-//	t_etris *t;
+//	int	*empty;
+	t_etris *t;
 	info = NULL;
 	lst = NULL;
 //	tetris = NULL;
@@ -34,7 +35,7 @@ int	main(int argc, char **argv)
 	{
 		info = create_info(argv[1]);
 //		tetris = create_tetris(info);
-		lst = create_lst(info->output);
+		lst = create_lst(info->coord);
 		map = create_map(info);
 //		check_num_blocks(argv[1]);
 //		input_strings(argv[1], info->block_count);
@@ -45,10 +46,26 @@ int	main(int argc, char **argv)
 //		info->coord = NULL;
 //	info->coord[info->block_count] = NULL;
 //	map->mappi[1][1] = 'A';		
-	if(check_if_fits(map, lst->content, 0, 0))
+//	empty = find_empty(map);
+//	if(check_if_fits(map, lst->content, empty[0], empty[1]))
 //	t = lst->content;
 //	ft_putchar(t->value);
-		map = fill_map(map, lst->content, 0, 0);
+//		map = fill_map(map, lst->content, 0, 0);
+//	move(lst, 0, 1);	
+	solver(map, lst);
+	while (lst)
+	{
+		t = lst->content;
+		while (i < 8)
+		{
+			ft_putnbr(t->coord[i]);
+			i++;
+		}
+		ft_putchar('\n');
+		lst = lst->next;
+		i = 0;
+	}
+	ft_putchar('\n');
 	while (info->coord[i])
 	{
 //		ft_putstr(info->output[i]);
@@ -56,9 +73,10 @@ int	main(int argc, char **argv)
 		ft_putstr(info->coord[i]);
 		ft_putstr("\n");
 //		ft_putchar(tetris->value[i]);
-		ft_putchar('\n');
+//		ft_putchar('\n');
 		i++;
 	}
+
 //	ft_putnbr(max(info->coord[0]));
 //	ft_putstr("\n");
 //	info = starting_map(max(info->coord[0]), info);
