@@ -43,5 +43,7 @@ t_etris	*create_tetris(int *array, char c)
 		return (NULL);
 	tetris->coord = array;
 	tetris->value = c;
+	tetris->x_off = 0;
+	tetris->y_off = 0;
 	return (tetris);
 }

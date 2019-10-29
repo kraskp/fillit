@@ -20,10 +20,10 @@ int	main(int argc, char **argv)
 	int	i;
 //	char	*encl;
 	t_info	*info;
-	t_list	*lst;
+	t_etris	*lst;
 	t_map	*map;
 //	int	*empty;
-	t_etris *t;
+//	t_etris *t;
 	info = NULL;
 	lst = NULL;
 //	tetris = NULL;
@@ -52,13 +52,13 @@ int	main(int argc, char **argv)
 //	ft_putchar(t->value);
 //		map = fill_map(map, lst->content, 0, 0);
 //	move(lst, 0, 1);	
-	solver(map, lst);
+	solve(lst, map);
 	while (lst)
 	{
-		t = lst->content;
+//		t = lst->content;
 		while (i < 8)
 		{
-			ft_putnbr(t->coord[i]);
+			ft_putnbr(lst->coord[i]);
 			i++;
 		}
 		ft_putchar('\n');

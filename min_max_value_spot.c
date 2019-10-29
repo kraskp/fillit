@@ -51,20 +51,6 @@ int		*ft_min(char *str)
 	return (min);
 }
 
-char	*value(char **str)
-{
-	int		i;
-	char	*values;
-
-	if (!(values = (char *)ft_memalloc(sizeof(char) * 9)))
-		return (NULL);
-	i = -1;
-	while (str[++i])
-		values[i] = 'A' + i;
-	values[i] = '\0';
-	return (values);
-}
-
 char	*spot(char *str)
 {
 	int	m;

@@ -27,10 +27,15 @@ char	**starting_map(int max)
 			return (NULL);
 		ft_memset(map[i], '.', max);
 		map[i][max] = '\0';
-//		printf("%s\n", map[i]);
 		i++;
 	}
 	map[max] = NULL;
-//	info->map = map;
 	return (map);
+}
+
+t_map	*bigger_map(t_map *map)
+{
+	map->maxi++;
+	free(map->mappi);
+	map->mappi = starting_map(map->maxi);
 }

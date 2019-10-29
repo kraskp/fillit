@@ -15,22 +15,16 @@
 
 char	*coordinates(char *str)
 {
-	char	*c;
+	char		*c;
 	int		i;
 	int		j;
-	char	*new;
-	
-//	ft_putstr(str);
-//	ft_putstr("\n");
+	char		*new;
+
 	new = spot(&str[0]);
-//	ft_putstr("taalla");
-//	ft_putstr("\n");
-//	ft_putstr(new);
-//	ft_putstr("\n");
 	c = ft_memalloc(9);
 	i = 0;
 	j = 0;
-	while (i < 16)
+	while (i < 20)
 	{
 		if (new[i] == '#')
 		{
@@ -41,8 +35,6 @@ char	*coordinates(char *str)
 		i++;
 	}
 	c[8] = 0x00;
-//	ft_putstr(c);
-//	ft_putstr("\n");
 	return (c);
 }
 
@@ -68,10 +60,7 @@ int		*intcoordinates(char *str)
 	int		*c;
 	int		i;
 
-//	ft_putstr(str);
-//	ft_putstr("\n");
-//	ft_putstr("\n");
-	c = (int *)malloc(sizeof(int) * 8);
+	c = (int *)malloc(sizeof(i) * 8);
 	i = 0;
 	while (i < 8)
 	{
@@ -80,34 +69,22 @@ int		*intcoordinates(char *str)
 	}
 	return (c);
 }
-
-t_list	*create_lst(char **coords)
+t_etris	*create_lst(char **coords)
 {
 	int		i;
-	t_list	*list;
-	t_etris	*tetris;
-	t_list	*head;
-//	char	c;
-//	int	*jou;
-//	t_etris *makak;
+	t_etris		*list;
+	t_etris		*tetris;
 
-//	c = 'A';
 	i = 0;
-//	jou = intcoordinates(output[i]);
-	tetris = create_tetris(intcoordinates(coords[i]), 'A' + i);
-//	ft_putchar(tetris->value);
-	list = ft_lstnew(tetris, 50);
-//	makak = list->content;
-//	ft_putchar(makak->value);
-	head = list;
+	list = create_tetris(intcoordinates(coords[i]), 'A' + i);
+	tetris = list;
 	i++;
 	while (coords[i])
 	{
-//		jou = intcoordinates(output[i]);
-		tetris = create_tetris(intcoordinates(coords[i]), 'A' + i);
-		list->next = ft_lstnew(tetris, 50);
-		list = list->next;
+		tetris->next = create_tetris(intcoordinates(coords[i]), 'A' + i);
+		tetris = tetris->next;
 		i++;
 	}
-	return (head);
+	tetris->next = NULL;
+	return (list);
 }

@@ -1,84 +1,42 @@
 #include "./includes/lib_fillit.h"
 
-void	move(t_list *lst, int y, int x)
-{	
-	int i;
-	t_etris *t;
-
-	t = lst->content;
-	i = 0;
-	while(lst)
-	{
-		t = lst->content;
-		while (i < 8)
-		{
-			if (i % 2 == 0)
-				ft_putnbr(t->coord[i] + x);
-			else
-				ft_putnbr(t->coord[i] + y);
-			i++;
-		}
-		lst = lst->next;
-		i = 0;
-//		lst = lst->next;
-		ft_putchar('\n');
-	}
-	ft_putchar('\n');
-}
-
-void	move_back_if_no_fit(t_etris *t, int x, int y)
+int	overlap(t_map *map, t_etris *t)
 {
 	int i;
+	int x;
+	int y;
 
 	i = 0;
-	while (i < 8)
+	x = t->coord[i] + t->x_off;
+	y = t->coord[i + 1] + t->y_off;
+	while (i <= 6 && map->mappi[y][x] == '.')
 	{
-		if (i % 2 == 0)
-			t->coord[i] = t->coord[i] - x;
-		else
-			t->coord[i] = t->coord[i] - y;
-		i++;
+		i += 2;
+		x = t->coord[i] + t->x_off;
+		y = t->coord[i + 1] + t->y_off;
 	}
+	return (i != 8);
 }
 
-int	check_if_fits(t_map *map, t_etris *t, int x, int y)
+int	check_if_in_bounds(t_map *map, t_etris *t, char axis)
 {
-	int i;
-
-	i = 0;
-	while (i < 8)
-	{
-		if (i % 2 == 0)
-			t->coord[i] = t->coord[i] + x;
-		else
-			t->coord[i] = t->coord[i] + y;
-		i++;
-	}
-	i = 0;
-	while (i < 8)
-        {
-		if (map->maxi <= t->coord[i] || map->maxi <= t->coord[i + 1])
-		{
-			move_back_if_no_fit(t, x, y);
-			return (0);
-		}
-		if (map->mappi[t->coord[i + 1]][t->coord[i]] == '.')
-			i += 2;
-		else
-		{
-			move_back_if_no_fit(t, x, y);
-			return (0);
-		}
-	}
-        return (1);
+	if (axis == 'y')
+		return (t->coord[1] + t->y_off < map->maxi &&
+			t->coord[3] + t->y_off < map->maxi &&
+			t->coord[5] + t->y_off < map->maxi &&
+			t->coord[7] + t->y_off < map->maxi);
+	return (t->coord[0] + t->x_off < map->maxi &&
+		t->coord[2] + t->x_off < map->maxi &&
+		t->coord[4] + t->x_off < map->maxi &&
+		t->coord[6] + t->x_off < map->maxi);
 }
 
-void	fill_map(t_map *map, t_etris *t)
+void	fill_map(t_map *map, t_etris *t, char value)
 {
-	map->mappi[t->coord[1]][t->coord[0]] = t->value;
-	map->mappi[t->coord[3]][t->coord[2]] = t->value;
-	map->mappi[t->coord[5]][t->coord[4]] = t->value;
-	map->mappi[t->coord[7]][t->coord[6]] = t->value;
+	map->mappi[t->coord[1] + t->y_off][t->coord[0] + t->x_off] = value;
+	map->mappi[t->coord[3] + t->y_off][t->coord[2] + t->x_off] = value;
+	map->mappi[t->coord[5] + t->y_off][t->coord[4] + t->x_off] = value;
+	map->mappi[t->coord[7] + t->y_off][t->coord[6] + t->x_off] = value;
 }
 
 void	printmap(t_map *map)
@@ -96,55 +54,34 @@ void	printmap(t_map *map)
 }
 
 
-void	solver(t_map *map, t_list *lst)
+int	solver(t_map *map, t_etris *t)
 {
-	int	i;
-	int	j;
-
-	t_etris	*t;
-	t_list	*tmp;
-	t_list	*head;
-	ft_putnbr(map->maxi);
-//	if (lst == NULL)
-//		return 1;
-	t = lst->content;
-	j = -1;
-	while (++j < map->maxi)
+	if (!t)
+		return (1);
+	t->y_off = 0;
+	while (check_if_in_bounds(map, t, 'y'))
 	{
-		i = -1;
-		while (++i < map->maxi)
+		t->x_off = 0;
+		while(check_if_in_bounds(map, t, 'x'))
 		{
-			if(check_if_fits(map, t, i, j))
+			if (!overlap(map, t))
 			{
-//				if(solver(map, lst->next))
-//					return 1;
-//				else
-//				{
-					fill_map(map,t);
-//				ft_putstr("taalla");
-				fill_map(map, t);
-				lst = lst->next;
-				t = lst->content;
-//				printmap(map);
-//				}
+				fill_map(map, t, t->value);
+				if(solver(map, t->next))
+					return (1);
+				else
+					fill_map(map,t, '.');
 			}
+			t->x_off++;
 		}
+		t->y_off++;
 	}
-//	return 0;
+	return (0);
 }
-/*
-t_map	*solve(t_list *list, t_map *map)
+
+t_map	*solve(t_etris *list, t_map *map)
 {
 	while(!(solver(map, list)))
-		bigger_map(map);
+		map = bigger_map(map);
 	return map;
-}*/
-
-
-
-
-
-
-
-
-
+}
