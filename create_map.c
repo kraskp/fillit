@@ -1,46 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   starting_map.c                                     :+:      :+:    :+:   */
+/*   create_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/26 16:40:02 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/30 11:01:54 by vtran            ###   ########.fr       */
+/*   Created: 2019/10/30 20:04:32 by kkraszew          #+#    #+#             */
+/*   Updated: 2019/10/30 20:05:36 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/lib_fillit.h"
-
-void	printmap(t_map *map)
-{
-	int i;
-
-	i = 0;
-	while (i < map->maxi)
-	{
-		ft_putstr(map->mappi[i]);
-		ft_putstr("\n");
-		i++;
-	}
-	ft_putstr("\n");
-}
-
-int		ft_max(char **coord)
-{
-	int	i;
-	int	min;
-	int	j;
-
-	j = 0;
-	i = 2;
-	while (coord[j])
-		j++;
-	min = j * 4;
-	while (i * i < min)
-		i++;
-	return (i);
-}
 
 char	**starting_map(int max)
 {
@@ -68,7 +38,7 @@ void	free_mappi(char **map)
 
 	i = 0;
 	while (map[i])
-	{	
+	{
 		free(map[i]);
 		i++;
 	}

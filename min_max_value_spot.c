@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:07:03 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/27 18:14:01 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/30 20:27:52 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,11 @@ char	*spot(char *str)
 	min = ft_min(str);
 	i = 0;
 	m = min[0] + min[1] * 5;
+	if (m == 0)
+	{
+		free(min);
+		min = NULL;
+	}
 	while (i < 20)
 	{
 		if (str[i] == '#')

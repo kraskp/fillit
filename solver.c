@@ -6,7 +6,7 @@
 /*   By: vtran <heikki-seta@hotmail.com>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/30 14:42:38 by vtran             #+#    #+#             */
-/*   Updated: 2019/10/30 14:42:58 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/30 20:24:57 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,6 @@ int		overlap(t_map *map, t_etris *t)
 	return (i != 8);
 }
 
-int		check_if_in_bounds(t_map *map, t_etris *t, char axis)
-{
-	if (axis == 'y')
-		return (t->coord[1] + t->y_off < map->maxi &&
-				t->coord[3] + t->y_off < map->maxi &&
-				t->coord[5] + t->y_off < map->maxi &&
-				t->coord[7] + t->y_off < map->maxi);
-	else
-		return (t->coord[0] + t->x_off < map->maxi &&
-				t->coord[2] + t->x_off < map->maxi &&
-				t->coord[4] + t->x_off < map->maxi &&
-				t->coord[6] + t->x_off < map->maxi);
-}
-
-void	fill_map(t_map *map, t_etris *t, char value)
-{
-	map->mappi[t->coord[1] + t->y_off][t->coord[0] + t->x_off] = value;
-	map->mappi[t->coord[3] + t->y_off][t->coord[2] + t->x_off] = value;
-	map->mappi[t->coord[5] + t->y_off][t->coord[4] + t->x_off] = value;
-	map->mappi[t->coord[7] + t->y_off][t->coord[6] + t->x_off] = value;
-}
-
 void	free_lst(t_etris *lst)
 {
 	t_etris	*tmp;
@@ -70,8 +48,6 @@ void	free_lst(t_etris *lst)
 
 int		solver(t_map *map, t_etris *t)
 {
-	t_etris	*head;
-
 	if (!t)
 		return (1);
 	t->y_off = 0;

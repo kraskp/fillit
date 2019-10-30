@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:18:54 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/30 14:54:23 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/30 20:36:50 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,6 @@ t_map					*solve(t_etris *etris, t_map *map);
 int						overlap(t_map *map, t_etris *t);
 int						check_if_in_bounds(t_map *map, t_etris *t, char axis);
 void					printmap(t_map *map);
+void					main_help(t_map *map, t_etris *head, t_info *info);
+
 #endif

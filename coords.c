@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_functions.c                                 :+:      :+:    :+:   */
+/*   coords.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/27 18:27:32 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/30 16:21:18 by vtran            ###   ########.fr       */
+/*   Created: 2019/10/30 20:09:12 by kkraszew          #+#    #+#             */
+/*   Updated: 2019/10/30 20:09:13 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,8 +85,8 @@ char	**input_strings(char *path, int size)
 
 void	free_info(t_info *info)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 	char	**co;
 	char	**out;
 
@@ -107,17 +107,4 @@ void	free_info(t_info *info)
 	free(co);
 	free(out);
 	free(info);
-}
-
-t_info	*create_info(char *str)
-{
-	t_info *info;
-
-	if (!(info = (t_info *)ft_memalloc(sizeof(t_info))))
-		return (NULL);
-	info->block_count = check_num_blocks(str);
-	if (!(info->output = input_strings(str, info->block_count)))
-		ft_exit_error();
-	info->coord = cool(info->block_count, info->output);
-	return (info);
 }

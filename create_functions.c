@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/27 18:27:32 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/27 18:28:28 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/30 20:11:08 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,19 @@ t_info	*create_info(char *str)
 	return (info);
 }
 
-t_map	*create_map(t_info *info)
+int		*intcoordinates(char *str)
 {
-	t_map	*mapp;
+	int	*c;
+	int	i;
 
-	if (!(mapp = (t_map *)ft_memalloc(sizeof(t_map))))
-		return (NULL);
-	mapp->maxi = (ft_max(info->coord));
-	mapp->mappi = starting_map(mapp->maxi);
-	return (mapp);
+	c = (int *)malloc(sizeof(i) * 8);
+	i = 0;
+	while (i < 8)
+	{
+		c[i] = str[i] - '0';
+		i++;
+	}
+	return (c);
 }
 
 t_etris	*create_tetris(int *array, char c)
@@ -46,4 +50,24 @@ t_etris	*create_tetris(int *array, char c)
 	tetris->x_off = 0;
 	tetris->y_off = 0;
 	return (tetris);
+}
+
+t_etris	*create_lst(char **coords)
+{
+	int			i;
+	t_etris		*list;
+	t_etris		*tetris;
+
+	i = 0;
+	list = create_tetris(intcoordinates(coords[i]), 'A' + i);
+	tetris = list;
+	i++;
+	while (coords[i])
+	{
+		tetris->next = create_tetris(intcoordinates(coords[i]), 'A' + i);
+		tetris = tetris->next;
+		i++;
+	}
+	tetris->next = NULL;
+	return (list);
 }

@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 12:14:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/30 17:24:23 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/30 20:37:12 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main(int argc, char **argv)
 
 	info = NULL;
 	lst = NULL;
+	map = NULL;
+	head = NULL;
 	i = 0;
 	if (argc != 2)
 		ft_exit_usage();
@@ -36,12 +38,6 @@ int	main(int argc, char **argv)
 	map = solve(lst, map);
 	printmap(map);
 	free_mappi(map->mappi);
-	free(map);
-	free_lst(head);
-	//free(info);
-	free_info(info);
-	while (1)
-	{
-	}
+	main_help(map, head, info);
 	return (0);
 }
