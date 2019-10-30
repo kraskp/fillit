@@ -6,13 +6,13 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:47:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/27 18:05:15 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/30 14:32:06 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./includes/lib_fillit.h"
 
-int		block_connection(char *str)
+int	block_connection(char *str)
 {
 	int		block;
 	int		i;
@@ -37,7 +37,7 @@ int		block_connection(char *str)
 	return (block == 6 || block == 8);
 }
 
-int		block_validator(char *block)
+int	block_validator(char *block)
 {
 	int		i;
 	int		sum;
@@ -50,17 +50,9 @@ int		block_validator(char *block)
 		i++;
 		if (i % 5 == 0 && block[i - 1] != '\n')
 			return (0);
-		// The following code will be necessary to prevent segfaults in the final version
-		// I noticed this after testing some of the bad blocks files in the tests_blocks folder
-		// ft_exit_error();
 	}
 	if (!(block[i] == 0 || block[i] == '\n'))
-	{
 		return (0);
-		// The following code will be necessary to prevent segfaults in the final version
-		// I noticed this after testing some of the bad blocks files in the tests_blocks folder
-		// ft_exit_error();
-	}
 	if (sum != 732)
 		return (0);
 	return (1);
@@ -81,8 +73,6 @@ int	check_num_blocks(char *file)
 		free(line);
 	}
 	block_count++;
-	// Added an extra check here.
-	// If (number of lines + 1) % 5 does not = 0, then the input file is wrong.
 	if (block_count % 5 != 0)
 		ft_exit_error();
 	block_count /= 5;

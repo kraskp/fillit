@@ -6,115 +6,42 @@
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 12:14:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/27 17:41:07 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/30 17:24:23 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./srcs/libft/includes/libft.h"
 #include "./includes/lib_fillit.h"
-#include <stdio.h>
 
-// usage of struct t_place *info has reduced number of variables needed here -KK
 int	main(int argc, char **argv)
 {
-	int	i;
-//	char	*encl;
+	int		i;
 	t_info	*info;
 	t_etris	*lst;
 	t_map	*map;
-//	int	*empty;
-//	t_etris *t;
+	t_etris *head;
+
 	info = NULL;
 	lst = NULL;
-//	tetris = NULL;
-//	encl = "{}";
 	i = 0;
 	if (argc != 2)
 		ft_exit_usage();
 	if (argc == 2)
 	{
 		info = create_info(argv[1]);
-//		tetris = create_tetris(info);
 		lst = create_lst(info->coord);
+		head = lst;
 		map = create_map(info);
-//		check_num_blocks(argv[1]);
-//		input_strings(argv[1], info->block_count);
-//		info->coord = cool(info);
 	}
-//	if (!(info->coord = (char **)ft_memalloc(sizeof(char *) *
-//		(info->block_count + 1))))
-//		info->coord = NULL;
-//	info->coord[info->block_count] = NULL;
-//	map->mappi[1][1] = 'A';		
-//	empty = find_empty(map);
-//	if(check_if_fits(map, lst->content, empty[0], empty[1]))
-//	t = lst->content;
-//	ft_putchar(t->value);
-//		map = fill_map(map, lst->content, 0, 0);
-//	move(lst, 0, 1);	
-	solve(lst, map);
-	while (lst)
+	map = solve(lst, map);
+	printmap(map);
+	free_mappi(map->mappi);
+	free(map);
+	free_lst(head);
+	//free(info);
+	free_info(info);
+	while (1)
 	{
-//		t = lst->content;
-		while (i < 8)
-		{
-			ft_putnbr(lst->coord[i]);
-			i++;
-		}
-		ft_putchar('\n');
-		lst = lst->next;
-		i = 0;
 	}
-	ft_putchar('\n');
-	while (info->coord[i])
-	{
-//		ft_putstr(info->output[i]);
-//		tetris->coord[i] = coordinates(tetris->output[i], i);
-		ft_putstr(info->coord[i]);
-		ft_putstr("\n");
-//		ft_putchar(tetris->value[i]);
-//		ft_putchar('\n');
-		i++;
-	}
-
-//	ft_putnbr(max(info->coord[0]));
-//	ft_putstr("\n");
-//	info = starting_map(max(info->coord[0]), info);
-//	ft_putnbr(max(info->coord[0]));
-//	ft_putstr("\n");
-	i = 0;
-//	bigger_map(map);
-	while (i < map->maxi)
-	{
-		ft_putstr(map->mappi[i]);
-		ft_putstr("\n");
-		i++;
-	}
-//	ft_putnbr(info->block_count);
-//	ft_putstr("\n");
-
-//		m = min(output[i]);
-//		ft_array_print(m, 2, encl);
-//		ft_putchar('\n');
-//		i++;
-//	}
-//	if (fd == -1)
-//	{
-//		ft_putstr("error\n");
-//		exit(EXIT_FAILURE);
-//	}
-//	while (output[i])
-//	{
-//		if (!block_connection(output[i]) && !block_validator(output[i]))
-//		{
-//			printf("%s", output[i]);
-//			ft_putnbr(i);
-//			ft_putchar('\n');
-//		}
-//			i++;
-//	}
-//	ft_putnbr(block_count);
-	//	ft_putstr(*output);
-//	free(info);
 	return (0);
 }
