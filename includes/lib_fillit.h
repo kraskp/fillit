@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   lib_fillit.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vtran <vtran@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:18:54 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/30 20:36:50 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/31 17:23:13 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_FILLIT_H
 # define LIB_FILLIT_H
 
-# include "../srcs/libft/includes/libft.h"
 # include <fcntl.h>
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
 
 typedef struct			s_info
 {
@@ -27,8 +29,6 @@ typedef struct			s_etris
 {
 	int					*coord;
 	char				value;
-	int					x_off;
-	int					y_off;
 	struct s_etris		*next;
 }						t_etris;
 
@@ -59,12 +59,18 @@ t_etris					*create_tetris(int *arr, char c);
 t_map					*create_map(t_info *info);
 int						*intcoordinates(char *str);
 t_etris					*create_lst(char **output);
-void					fill_map(t_map *map, t_etris *t, char value);
+void					fill_map(t_map *map, t_etris *t, \
+						char value, int *ji);
 int						solver(t_map *map, t_etris *ls);
 t_map					*solve(t_etris *etris, t_map *map);
-int						overlap(t_map *map, t_etris *t);
-int						check_if_in_bounds(t_map *map, t_etris *t, char axis);
+int						overlap(t_map *map, t_etris *t, int j, int i);
+int						check_if_in_bounds(t_map *map, t_etris *t, \
+						char axis, int z);
 void					printmap(t_map *map);
-void					main_help(t_map *map, t_etris *head, t_info *info);
-
+void					*ft_memset(void *s, int c, size_t n);
+int						get_next_line(int fd, char **line);
+void					ft_putstr(const char *s);
+void					*ft_memalloc(size_t size);
+char					*ft_strnew(size_t size);
+char					*ft_strdup(const char *s1);
 #endif

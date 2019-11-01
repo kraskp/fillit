@@ -1,14 +1,14 @@
-#******************************************************************************#
+# **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+         #
+#    By: vtran <vtran@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 13:56:16 by kkraszew          #+#    #+#              #
-#    Updated: 2019/10/27 15:13:18 by kkraszew         ###   ########.fr        #
+#    Updated: 2019/10/31 14:57:24 by vtran            ###   ########.fr        #
 #                                                                              #
-#******************************************************************************#
+# **************************************************************************** #
 
 NAME	= libft.a
 SRCS	= ft_memset.c \
@@ -97,18 +97,11 @@ FLAGS	= -Wall -Wextra -Werror
 INC		= ./includes
 
 all: $(NAME)
-	@echo ""
 
-norm:
-	@norminette $(SRCS)
-
-$(NAME): $(OBJS)
+$(NAME):
+	@gcc $(FLAGS) -c $(SRCS) -I $(INC)
 	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-
-%.o: %.c
-	@echo "Libft: \033[0;32m" $< "\033[0m"
-	@gcc -c $< -o $@ $(FLAGS) -I$(INC)
 
 clean:
 	@rm -f $(OBJS)

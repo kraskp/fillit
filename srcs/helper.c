@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   helper.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vtran <vtran@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 17:45:55 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/30 20:36:37 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/10/31 17:23:10 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/lib_fillit.h"
+#include "../includes/lib_fillit.h"
 
 void	ft_exit_usage(void)
 {
@@ -24,9 +24,55 @@ void	ft_exit_error(void)
 	exit(EXIT_FAILURE);
 }
 
-void	main_help(t_map *map, t_etris *head, t_info *info)
+void	free_lst(t_etris *lst)
 {
+	t_etris	*tmp;
+
+	if (!lst)
+		return ;
+	while (lst)
+	{
+		tmp = lst->next;
+		free(lst->coord);
+		free(lst);
+		lst = tmp;
+	}
+	lst = NULL;
+}
+
+void	free_info(t_info *info)
+{
+	int		i;
+	int		j;
+	char	**coords;
+	char	**output;
+
+	i = -1;
+	j = -1;
+	coords = info->coord;
+	output = info->output;
+	while (coords[++i])
+		free(coords[i]);
+	while (output[++j])
+		free(output[j]);
+	free(coords);
+	free(output);
+	free(info);
+	info = NULL;
+	coords = NULL;
+	output = NULL;
+}
+
+void	free_mappi(char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i])
+	{
+		free(map[i]);
+		i++;
+	}
 	free(map);
-	free_lst(head);
-	free_info(info);
+	map = NULL;
 }

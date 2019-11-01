@@ -1,16 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   coords.c                                           :+:      :+:    :+:   */
+/*   create_info.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vtran <vtran@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 20:09:12 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/30 20:09:13 by kkraszew         ###   ########.fr       */
+/*   Created: 2019/10/27 18:27:32 by kkraszew          #+#    #+#             */
+/*   Updated: 2019/10/31 17:24:27 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/lib_fillit.h"
+#include "../includes/lib_fillit.h"
+
+/*
+**changing a string of ., #, \n into a coordinates
+*/
 
 char	*coordinates(char *str)
 {
@@ -19,7 +23,7 @@ char	*coordinates(char *str)
 	int		j;
 	char	*new;
 
-	new = spot(&str[0]);
+	new = spot(str);
 	c = ft_memalloc(9);
 	i = 0;
 	j = 0;
@@ -37,24 +41,32 @@ char	*coordinates(char *str)
 	return (c);
 }
 
+/*
+**making string of strings of tetrises
+**(12xdots, 4x'\n', 4x#) x ammount of tetrises
+**into a coordinates
+*/
+
 char	**cool(int block_count, char **output)
 {
 	char	**jou;
 	int		i;
 
-	i = 0;
+	i = -1;
 	if (!(jou = (char **)malloc(sizeof(char *) * block_count + 1)))
 		return (NULL);
-	while (output[i])
-	{
+	while (output[++i])
 		jou[i] = coordinates(output[i]);
-		i++;
-	}
 	jou[block_count] = NULL;
 	return (jou);
 }
 
-char	**input_strings(char *path, int size)
+/*
+**chopping the content of a file to string of single tetris strings
+**also validating the tetris pieces
+*/
+
+char	**input_strings(char *file, int size)
 {
 	int		fd;
 	int		ret;
@@ -66,7 +78,7 @@ char	**input_strings(char *path, int size)
 	buf = ft_strnew(21);
 	if (!(output = (char**)ft_memalloc(sizeof(char*) * (size + 1))))
 		output = NULL;
-	fd = open(path, O_RDONLY);
+	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		output = NULL;
 	while ((ret = read(fd, buf, 21)))
@@ -83,28 +95,25 @@ char	**input_strings(char *path, int size)
 	return (output);
 }
 
-void	free_info(t_info *info)
-{
-	int		i;
-	int		j;
-	char	**co;
-	char	**out;
+/*
+**taking a file parameter
+**opening the file and storing
+**ammount of tetris,
+**content of a file (21 chars) x ammount of tetris ->(**str)
+**content of a file as coordinates, 9 chars x ammount of tetris ->(**coord)
+**0,0,0,1,1,0,1,1, means 2x2 square
+**check_num_blocks & input_strings
+*/
 
-	i = 0;
-	j = 0;
-	co = info->coord;
-	out = info->output;
-	while (co[i])
-	{
-		free(co[i]);
-		i++;
-	}
-	while (out[j])
-	{
-		free(out[j]);
-		j++;
-	}
-	free(co);
-	free(out);
-	free(info);
+t_info	*create_info(char *file)
+{
+	t_info *info;
+
+	if (!(info = (t_info *)ft_memalloc(sizeof(t_info))))
+		return (NULL);
+	info->block_count = check_num_blocks(file);
+	if (!(info->output = input_strings(file, info->block_count)))
+		ft_exit_error();
+	info->coord = cool(info->block_count, info->output);
+	return (info);
 }

@@ -3,14 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   block_fx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: vtran <vtran@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:47:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/30 14:32:06 by vtran            ###   ########.fr       */
+/*   Updated: 2019/10/31 17:23:06 by vtran            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/lib_fillit.h"
+#include "../includes/lib_fillit.h"
+
+/*
+**checking # neihbours has to be either 6 or 8
+*/
 
 int	block_connection(char *str)
 {
@@ -37,6 +41,12 @@ int	block_connection(char *str)
 	return (block == 6 || block == 8);
 }
 
+/*
+**checking that every 5th char is \n
+**checking that last one is '\n' or NULL
+**checking that there is 12xdots, 4x# and 4x'\n'
+*/
+
 int	block_validator(char *block)
 {
 	int		i;
@@ -57,6 +67,10 @@ int	block_validator(char *block)
 		return (0);
 	return (1);
 }
+
+/*
+**counting ammount of tetris blocks
+*/
 
 int	check_num_blocks(char *file)
 {

@@ -1,16 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_map.c                                       :+:      :+:    :+:   */
+/*   starting_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/30 20:04:32 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/30 20:05:36 by kkraszew         ###   ########.fr       */
+/*   Created: 2019/10/26 16:40:02 by kkraszew          #+#    #+#             */
+/*   Updated: 2019/11/01 18:26:42 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/lib_fillit.h"
+#include "../includes/lib_fillit.h"
+
+void	printmap(t_map *map)
+{
+	int i;
+
+	i = 0;
+	while (i < map->maxi)
+	{
+		ft_putstr(map->mappi[i]);
+		ft_putstr("\n");
+		i++;
+	}
+}
+
+int		ft_max(char **coord)
+{
+	int	i;
+	int	min;
+	int	j;
+
+	j = 0;
+	i = 2;
+	while (coord[j])
+		j++;
+	min = j * 4;
+	while (i * i < min)
+		i++;
+	return (i);
+}
 
 char	**starting_map(int max)
 {
@@ -30,20 +59,6 @@ char	**starting_map(int max)
 	}
 	map[max] = NULL;
 	return (map);
-}
-
-void	free_mappi(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-	{
-		free(map[i]);
-		i++;
-	}
-	free(map);
-	map = NULL;
 }
 
 t_map	*bigger_map(t_map *map)
