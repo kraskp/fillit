@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kkraszew <kkraszew@student.hive.fi>        +#+  +:+       +#+        */
+/*   By: kkraszew <kkraszew@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 18:57:22 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/27 13:41:23 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/11/02 16:42:30 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/lib_fillit.h"
 
 t_list	*handle_file(t_list **statlist, int fd)
 {

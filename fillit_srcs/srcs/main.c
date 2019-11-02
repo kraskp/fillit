@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vtran <vtran@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kkraszew <kkraszew@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 12:14:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/31 17:23:09 by vtran            ###   ########.fr       */
+/*   Updated: 2019/11/02 16:53:58 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/includes/libft.h"
+#include "../../libft/includes/libft.h"
 #include "../includes/lib_fillit.h"
 
 int	main(int argc, char **argv)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vtran <vtran@student.42.fr>                +#+  +:+       +#+         #
+#    By: kkraszew <kkraszew@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/17 13:56:16 by kkraszew          #+#    #+#              #
-#    Updated: 2019/10/31 14:57:24 by vtran            ###   ########.fr        #
+#    Updated: 2019/11/02 16:42:58 by kkraszew         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -83,7 +83,6 @@ SRCS	= ft_memset.c \
 			ft_swap_bits.c \
 			ft_reverse_bits.c \
 			ft_print_hex.c \
-			get_next_line.c \
 			ft_array_new.c \
 			ft_array_pop.c \
 			ft_array_print.c \

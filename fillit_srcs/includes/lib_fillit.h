@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   lib_fillit.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vtran <vtran@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kkraszew <kkraszew@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:18:54 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/31 17:23:13 by vtran            ###   ########.fr       */
+/*   Updated: 2019/11/02 16:54:32 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIB_FILLIT_H
 # define LIB_FILLIT_H
 
+# include "../../libft/includes/libft.h"
 # include <fcntl.h>
 # include <stdlib.h>
 # include <string.h>
@@ -37,6 +38,8 @@ typedef	struct			s_map
 	char				**mappi;
 	int					maxi;
 }						t_map;
+
+int						get_next_line(int fd, char **line);
 void					free_info(t_info *info);
 void					free_mappi(char **map);
 void					free_lst(t_etris *lst);
@@ -67,10 +70,5 @@ int						overlap(t_map *map, t_etris *t, int j, int i);
 int						check_if_in_bounds(t_map *map, t_etris *t, \
 						char axis, int z);
 void					printmap(t_map *map);
-void					*ft_memset(void *s, int c, size_t n);
-int						get_next_line(int fd, char **line);
-void					ft_putstr(const char *s);
-void					*ft_memalloc(size_t size);
-char					*ft_strnew(size_t size);
-char					*ft_strdup(const char *s1);
+
 #endif

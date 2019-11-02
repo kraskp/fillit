@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vtran <vtran@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kkraszew <kkraszew@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/15 14:12:00 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/31 17:23:15 by vtran            ###   ########.fr       */
+/*   Updated: 2019/11/02 16:47:59 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,6 @@ void				ft_print_bits(unsigned char octet);
 unsigned char		ft_swap_bits(unsigned char octet);
 unsigned char		ft_reverse_bits(unsigned char octet);
 void				ft_print_hex(size_t n);
-int					get_next_line(int fd, char **line);
 int					*ft_array_new(size_t size);
 int					*ft_array_pop(int *arr, size_t size, unsigned int pos);
 void				ft_array_print(int *arr, size_t size, char *encl);

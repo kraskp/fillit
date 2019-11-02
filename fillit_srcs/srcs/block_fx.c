@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   block_fx.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vtran <vtran@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kkraszew <kkraszew@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:47:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/10/31 17:23:06 by vtran            ###   ########.fr       */
+/*   Updated: 2019/11/02 16:51:04 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	block_connection(char *str)
 	i = 0;
 	while (i < 20)
 	{
+		if (str[i] != '#' || str[i] != '.' || str[i] != '\n')
+			ft_exit_error();
 		if (str[i] == '#')
 		{
 			if ((i + 1) < 20 && str[i + 1] == '#')
@@ -91,5 +93,7 @@ int	check_num_blocks(char *file)
 		ft_exit_error();
 	block_count /= 5;
 	close(fd);
+	if (block_count > 26 || block_count < 0)
+		ft_exit_error();
 	return (block_count);
 }

@@ -3,19 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vtran <heikki-seta@hotmail.com>            +#+  +:+       +#+         #
+#    By: kkraszew <kkraszew@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/31 17:30:57 by vtran             #+#    #+#              #
-#    Updated: 2019/11/01 18:13:04 by kkraszew         ###   ########.fr        #
+#    Updated: 2019/11/02 16:53:15 by kkraszew         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
 FILES = main.c create_map.c create_info.c create_lst_of_tetris.c \
-		block_fx.c helper.c minxy_spot.c solver.c
+		block_fx.c helper.c minxy_spot.c solver.c get_next_line.c
 
-SRCS =$(addprefix srcs/, $(FILES))
+SRCS =$(addprefix fillit_srcs/srcs/, $(FILES))
 OBJS =$(addprefix objs/, $(FILES:.c=.o))
 
 CC = gcc
@@ -27,7 +27,7 @@ all: $(NAME)
 $(NAME): $(OBJS) | lib
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LFLAGS)
 
-$(OBJS): objs/%.o: srcs/%.c | objs
+$(OBJS): objs/%.o: fillit_srcs/srcs/%.c | objs
 	@$(CC) $(CFLAGS) -o $@ -c $^
 
 lib:
