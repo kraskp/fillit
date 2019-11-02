@@ -6,7 +6,7 @@
 /*   By: kkraszew <kkraszew@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 16:47:27 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/11/02 16:51:04 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/11/02 17:09:33 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	block_connection(char *str)
 	i = 0;
 	while (i < 20)
 	{
-		if (str[i] != '#' || str[i] != '.' || str[i] != '\n')
+		if (str[i] != '#' && str[i] != '.' && str[i] != '\n')
 			ft_exit_error();
 		if (str[i] == '#')
 		{
