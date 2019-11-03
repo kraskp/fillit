@@ -6,7 +6,7 @@
 #    By: kkraszew <kkraszew@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/03 15:35:24 by kkraszew          #+#    #+#              #
-#    Updated: 2019/11/03 16:34:27 by kkraszew         ###   ########.fr        #
+#    Updated: 2019/11/03 18:28:44 by kkraszew         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,4 +53,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all norm clean fclean re
+.PHONY: all clean fclean re
