@@ -5,43 +5,52 @@
 #                                                     +:+ +:+         +:+      #
 #    By: kkraszew <kkraszew@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/31 17:30:57 by vtran             #+#    #+#              #
-#    Updated: 2019/11/02 16:53:15 by kkraszew         ###   ########.fr        #
+#    Created: 2019/11/03 15:35:24 by kkraszew          #+#    #+#              #
+#    Updated: 2019/11/03 16:34:27 by kkraszew         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fillit
 
-FILES = main.c create_map.c create_info.c create_lst_of_tetris.c \
-		block_fx.c helper.c minxy_spot.c solver.c get_next_line.c
-
-SRCS =$(addprefix fillit_srcs/srcs/, $(FILES))
-OBJS =$(addprefix objs/, $(FILES:.c=.o))
-
-CC = gcc
 CFLAGS = -Wall -Wextra -Werror
-LFLAGS = -L ./libft/ -lft
+
+SRC = fillit_srcs/main.c \
+		fillit_srcs/create_info.c \
+		fillit_srcs/create_lst_of_tetris.c \
+		fillit_srcs/create_map.c \
+		fillit_srcs/libfx_one.c \
+		fillit_srcs/libfx_two.c \
+		fillit_srcs/libfx_three.c \
+		fillit_srcs/libfx_four.c \
+		fillit_srcs/get_next_line.c \
+		fillit_srcs/helper.c \
+		fillit_srcs/solver.c \
+
+OBJ = main.o \
+		create_info.o \
+		create_lst_of_tetris.o \
+		create_map.o \
+		libfx_one.o \
+		libfx_two.o \
+		libfx_three.o \
+		libfx_four.o \
+		get_next_line.o \
+		helper.o \
+		solver.o \
+
 
 all: $(NAME)
 
-$(NAME): $(OBJS) | lib
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LFLAGS)
-
-$(OBJS): objs/%.o: fillit_srcs/srcs/%.c | objs
-	@$(CC) $(CFLAGS) -o $@ -c $^
-
-lib:
-	@make -C ./libft
-
-objs:
-	@mkdir objs/
+$(NAME):
+	gcc -c $(CFLAGS) $(SRC)
+	gcc $(OBJ) -o $(NAME)
 
 clean:
-	@rm -rf objs/
-	@make clean -C ./libft
+	rm -f $(OBJ)
 
 fclean: clean
-	@make fclean -C ./libft
-	@rm -f $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all norm clean fclean re
