@@ -6,13 +6,13 @@
 /*   By: kkraszew <kkraszew@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/21 18:57:22 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/11/03 16:01:30 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/11/03 19:12:37 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-t_list	*handle_file(t_list **statlist, int fd)
+static	t_list	*handle_file(t_list **statlist, int fd)
 {
 	t_list	*file;
 	t_file	f;
@@ -31,7 +31,7 @@ t_list	*handle_file(t_list **statlist, int fd)
 	return (*statlist);
 }
 
-char	*get_line(char **content)
+static	char	*get_line(char **content)
 {
 	char	*line;
 	size_t	len;
@@ -51,7 +51,7 @@ char	*get_line(char **content)
 	return (line);
 }
 
-int		get_next_line(int fd, char **line)
+int				get_next_line(int fd, char **line)
 {
 	char			buf[BUFF_SIZE + 1];
 	size_t			ret;
