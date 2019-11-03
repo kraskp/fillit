@@ -6,13 +6,13 @@
 /*   By: kkraszew <kkraszew@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/03 16:01:01 by kkraszew          #+#    #+#             */
-/*   Updated: 2019/11/03 16:43:33 by kkraszew         ###   ########.fr       */
+/*   Updated: 2019/11/03 16:44:22 by kkraszew         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FILLIT_H
 # define FILLIT_H
-# define BUFF_SIZE 8
+# define BUFF_SIZE 256
 # include <fcntl.h>
 # include <stdlib.h>
 # include <string.h>
